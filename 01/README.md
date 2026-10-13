@@ -25,6 +25,10 @@ assets/img/icons/          Small UI icons used from CSS
 Stylesheets are linked in the order above and the order matters: later files rely on overriding
 earlier ones (for example `.mobilecta` hides `.button`, and `.reveal` wins over section transitions).
 
+**After changing any CSS or JS file, bump the `?v=` value** on the `<link>` and `<script>` tags in
+`index.html` (for example `?v=20261013` to `?v=20261014`). GitHub Pages lets browsers cache these
+files for 10 minutes; a new `?v=` makes visitors fetch the updated files straight away.
+
 ## Editing
 
 - **Carousel steps**: the steps carousel is the "Keep it simple & accurate!" carousel from

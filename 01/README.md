@@ -14,6 +14,7 @@ css/sections.css           One block per page section, in page order
 css/utilities.css          Scroll-reveal classes added by JavaScript
 css/responsive.css         Breakpoints (1080 / 900 / 720 / 640 / 560) and reduced motion
 js/carousel.js             18-step carousel: timer dots, arrows, drag, stops at the last card
+js/testimonials.js         Customer stories: tabs, arrows, 7-second auto-rotation
 js/form.js                 Business-type choice, step 2 reveal, submit placeholder
 js/video.js                Inline YouTube player in the hero
 js/main.js                 Header state, mobile CTA, FAQ, scroll reveal
@@ -30,6 +31,11 @@ earlier ones (for example `.mobilecta` hides `.button`, and `.reveal` wins over 
   blinq-web-v3.0, restyled for the dark theme. Edit the `<li class="step">` cards in `index.html`;
   dots are generated to match. Each card's icon is a `<use href="#i-...">` pointing at the icon sprite
   at the top of `<body>`. Cards per view: 4 on desktop, 3 from 1080px, 2 from 720px, 1¼ from 560px.
+- **Customer stories**: the testimonial carousel from blinq-web-v3.0, restyled for the dark theme.
+  Each story is a `<figure class="testi__slide">` with a matching `<button class="testi__tab">`; keep
+  the ids in step (`testi-N` / `testi-tab-N`) when adding or removing one. Only quotes published on
+  blinq.com.au are used. A client logo goes in `<span class="testi__logo">` (shown on a white tile);
+  without a logo, use `<span class="testi__mono">` with the client's initials.
 - **Video**: change `data-video-id` on `#videoCover` in `index.html`.
 - **Colours and fonts**: `:root` tokens at the top of `css/base.css`.
 - **Demo form**: `js/form.js` only shows a confirmation. Wire the submit handler to your CRM or form
@@ -45,10 +51,11 @@ earlier ones (for example `.mobilecta` hides `.button`, and `.reveal` wins over 
 | `favicon.webp` | Browser tab icon |
 | `og-cover.webp` | Social sharing preview (1200 x 630) |
 | `app-*.webp` | Integration logos under the carousel |
+| `logos/clients/*.webp` | Client logos in the customer stories |
 | `swatch-*.svg` | Fabric thumbnails in the hero app mockup |
 | `icons/select-arrow.svg` | Dropdown arrow in the form |
 
-Logo, favicon, social and integration images come from the `blinq-redesign` repo.
+Logo, favicon, social, integration and client logo images come from the `blinq-redesign` repo.
 
 ## Running it
 

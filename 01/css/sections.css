@@ -2,7 +2,7 @@
    BlinQ leads site · sections.css
    One block per page section, in page order:
    hero, video preview, industry strip, booking, pain list,
-   connected workflow, testimonial, onboarding, FAQ, final CTA.
+   connected workflow, testimonials, onboarding, FAQ, final CTA.
    ============================================================ */
 
 /* ============================================================
@@ -529,58 +529,137 @@
 }
 
 /* ============================================================
-   TESTIMONIAL
+   TESTIMONIALS (customer stories carousel from blinq-web-v3.0, dark theme)
+   One story at a time; the red bar over the active tab times the
+   change (7s) and pauses on hover or focus. js/testimonials.js
    ============================================================ */
-.testimonial{
-  display:flex;
-  justify-content:center;
-}
-.testimonialCard{
-  width:100%;
+.testimonial{text-align:center}
+.testimonial h2{margin-top:20px}
+.testimonial > .textlink{margin-top:32px}
+
+/* Card: same red-tinted shell the page used for its single quote */
+.testi{
   max-width:1000px;
-  padding:56px 40px;
+  margin:52px auto 0;
+  padding:48px 48px 0;
+  text-align:left;
   background:linear-gradient(180deg, rgba(240,52,31,.05), rgba(240,52,31,.01));
   border:1px solid rgba(240,52,31,.22);
   border-radius:16px;
-  text-align:center;
   box-shadow:0 0 80px -30px rgba(240,52,31,.35) inset;
 }
-.testimonialCard .eyebrow{margin-bottom:28px}
-.testimonialCard blockquote{
-  margin:0 auto;
-  max-width:760px;
-  font-family:var(--sans);
-  font-style:normal;
-  font-weight:700;
-  font-size:clamp(20px,2.6vw,28px);
-  line-height:1.35;
+.testi__slides{display:grid;align-items:center}
+.testi__slide{
+  grid-area:1 / 1;
+  display:flex;
+  flex-direction:column;
+  gap:24px;
+  margin:0;
+  opacity:0;
+  transform:translateY(10px);
+  visibility:hidden;
+  transition:opacity .7s var(--ease),transform .7s var(--ease),visibility 0s .7s;
+}
+.testi__slide.is-active{opacity:1;transform:none;visibility:visible;transition-delay:0s,0s,0s}
+.quote__mark{width:28px;height:28px;display:block;fill:var(--red)}
+.testi__slide blockquote{
+  margin:0;
+  max-width:800px;
+  font-size:clamp(20px,2.4vw,26px);
+  line-height:1.38;
   letter-spacing:-.02em;
+  font-weight:700;
   color:#fff;
 }
-.testimonialCard .person{
+.testi__slide figcaption{display:flex;align-items:center;gap:16px}
+/* Client logos sit on white tiles so dark logos stay readable */
+.testi__logo{
+  flex:none;
   display:inline-flex;
   align-items:center;
-  gap:14px;
-  margin-top:32px;
-  padding:8px 16px 8px 8px;
-  border-radius:999px;
-  background:rgba(255,255,255,.03);
-  border:1px solid rgba(255,255,255,.06);
+  justify-content:center;
+  height:48px;
+  padding:0 14px;
+  background:#fff;
+  border-radius:8px;
 }
-.testimonialCard .avatar{
-  width:38px;height:38px;
-  border-radius:50%;
-  display:flex;align-items:center;justify-content:center;
-  background:#2A1310;
-  color:#F4A296;
-  font-size:12.5px;
+.testi__logo img{width:auto;height:auto;max-height:32px;max-width:120px}
+.testi__mono{
+  flex:none;
+  width:48px;
+  height:48px;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  border:1px solid var(--line-2);
+  border-radius:10px;
+  background:var(--card-2);
+  font-size:13px;
   font-weight:700;
-  letter-spacing:.02em;
+  letter-spacing:.04em;
+  color:#fff;
 }
-.testimonialCard .person div{text-align:left}
-.testimonialCard .person b{display:block;font-size:13.5px;color:#fff;font-weight:600}
-.testimonialCard .person p{margin:1px 0 0;font-size:12px;color:var(--muted)}
-.testimonialCard .textlink{margin-top:32px}
+.testi__who{display:flex;flex-direction:column;gap:2px}
+.testi__who strong{font-size:15px;font-weight:600;color:#fff}
+.testi__who small{font-size:13px;color:var(--muted)}
+
+/* Tabs and arrows along the bottom of the card */
+.testi__nav{
+  margin-top:40px;
+  border-top:1px solid rgba(255,255,255,.08);
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:24px;
+}
+.testi__tabs{
+  display:flex;
+  gap:28px;
+  overflow-x:auto;
+  scrollbar-width:none;
+  min-width:0;
+  padding-right:24px;
+  -webkit-mask-image:linear-gradient(90deg,#000 88%,transparent);
+  mask-image:linear-gradient(90deg,#000 88%,transparent);
+}
+.testi__tabs::-webkit-scrollbar{display:none}
+.testi__tab{
+  position:relative;
+  flex:none;
+  padding:18px 0;
+  border:0;
+  background:none;
+  font-size:14px;
+  font-weight:500;
+  color:var(--muted-2);
+  white-space:nowrap;
+  cursor:pointer;
+  transition:color .15s ease;
+}
+.testi__tab:hover,.testi__tab.is-active{color:#fff}
+.testi__bar{position:absolute;left:0;right:0;top:-1px;height:2px;background:var(--red);transform:scaleX(0);transform-origin:left}
+.testi__tab.is-active .testi__bar{animation:fill 7s linear forwards}
+.testi:hover .testi__bar,.testi:focus-within .testi__bar{animation-play-state:paused}
+.testi__arrows{display:flex;gap:8px;align-items:center;padding:12px 0}
+.testi__arrow{
+  width:36px;
+  height:36px;
+  flex:none;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  padding:0;
+  border:1px solid var(--line-2);
+  border-radius:50%;
+  background:transparent;
+  color:#fff;
+  cursor:pointer;
+  transition:border-color .15s ease,color .15s ease,background .15s ease;
+}
+.testi__arrow:hover{border-color:var(--red);color:var(--red-2);background:rgba(240,52,31,.08)}
+.testi__arrow svg{width:16px;height:16px;display:block;fill:none;stroke:currentColor;stroke-width:1.75;stroke-linecap:round;stroke-linejoin:round}
+.testi__arrow--prev svg{transform:rotate(180deg)}
+.testi__tab:focus-visible,.testi__arrow:focus-visible{outline:2px solid var(--red);outline-offset:2px}
 
 /* ============================================================
    ONBOARDING

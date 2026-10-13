@@ -22,6 +22,12 @@
 
 @media (max-width:720px){
   .flow{--per:2;--gap:12px}
+
+  /* Testimonials: tabs on their own row, arrows underneath on the right */
+  .testi{padding:28px 20px 0}
+  .testi__nav{flex-direction:column;align-items:stretch;gap:0}
+  .testi__tabs{gap:20px}
+  .testi__arrows{justify-content:flex-end;border-top:1px solid rgba(255,255,255,.08);padding:12px 0 16px}
 }
 
 @media (max-width:640px){
@@ -52,8 +58,7 @@
   .integration-logos li{height:42px;padding:0 14px}
   .integration-logos img{height:20px}
 
-  .testimonialCard{padding:40px 22px}
-  .testimonialCard blockquote{font-size:19px}
+  .testi__slide blockquote{font-size:19px}
 
   .onboardingIntro h2{font-size:clamp(34px,10vw,48px)}
   .ready{grid-template-columns:1fr;gap:8px}
@@ -101,4 +106,6 @@
   }
   .reveal{opacity:1;transform:none}
   .flow.is-ready .flow__track{transition:none}
+  .testi__slide{transition:none}
+  .testi__tab.is-active .testi__bar{animation:none;transform:scaleX(1)}
 }

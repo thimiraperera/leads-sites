@@ -82,16 +82,8 @@ footer{
   gap:20px;
   flex-wrap:wrap;
 }
-.footerLogoBox{
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-  padding:6px 14px;
-  background:#fff;
-  border-radius:8px;
-  line-height:1;
-}
-.footerLogoBox img{height:32px;width:auto;display:block}
+/* All-white logo straight on the dark footer */
+.footerLogo{height:32px;width:auto;display:block}
 .footerLeft p{
   margin:0;
   font-size:13.5px;

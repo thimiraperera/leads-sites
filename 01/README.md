@@ -56,7 +56,7 @@ files for 10 minutes; a new `?v=` makes visitors fetch the updated files straigh
 | File | Used for |
 |---|---|
 | `blinq-logo-white.webp` | Header (white version of the logo for the dark background) |
-| `blinq-logo.webp` | Footer logo box |
+| `blinq-logo-mono-white.webp` | Footer (all-white logo, sits straight on the dark background) |
 | `favicon.webp` | Browser tab icon |
 | `og-cover.webp` | Social sharing preview (1200 x 630) |
 | `app-*.webp` | Integration logos under the carousel |

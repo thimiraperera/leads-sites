@@ -62,9 +62,8 @@
 .formTopRow{
   display:flex;
   justify-content:space-between;
-  font-size:10.5px;
-  font-weight:700;
-  letter-spacing:.14em;
+  font-size:12px;
+  font-weight:600;
   padding-bottom:20px;
   border-bottom:1px solid #EAEAEA;
   margin-bottom:24px;
@@ -137,10 +136,8 @@
 }
 
 .detailsLabel{
-  font-size:10.5px;
-  font-weight:700;
-  letter-spacing:.16em;
-  text-transform:uppercase;
+  font-size:12px;
+  font-weight:600;
   color:#8A8A8A;
   padding-top:18px;
   border-top:1px solid #EAEAEA;

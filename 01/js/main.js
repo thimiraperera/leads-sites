@@ -1,7 +1,6 @@
 /* ============================================================
    BlinQ leads site · main.js
-   Header scroll state, mobile sticky CTA, FAQ accordion
-   and scroll reveal. Loaded last of the page scripts.
+   Header scroll state, mobile sticky CTA and scroll reveal. Loaded last of the page scripts.
    ============================================================ */
 (function () {
   'use strict';
@@ -27,20 +26,7 @@
   }
 
   /* ==========================================================
-     2. FAQ ACCORDION (one item open at a time)
-     ========================================================== */
-  var faqItems = document.querySelectorAll('.faq details');
-  Array.prototype.forEach.call(faqItems, function (item) {
-    item.addEventListener('toggle', function () {
-      if (!item.open) return;
-      Array.prototype.forEach.call(faqItems, function (other) {
-        if (other !== item) other.open = false;
-      });
-    });
-  });
-
-  /* ==========================================================
-     3. SCROLL REVEAL
+     2. SCROLL REVEAL
      ========================================================== */
   var prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   if (!prefersReduced && 'IntersectionObserver' in window) {
@@ -68,7 +54,7 @@
   }
 
   /* ==========================================================
-     4. BIND SCROLL
+     3. BIND SCROLL
      ========================================================== */
   var ticking = false;
   window.addEventListener('scroll', function () {

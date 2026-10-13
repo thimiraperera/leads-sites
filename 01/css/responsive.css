@@ -18,6 +18,23 @@
   }
   .mockup aside{display:none}
   .screen{aspect-ratio:16/11}
+
+  /* FAQ: topics become a row of pills above the questions, scrolling sideways */
+  .faqx{grid-template-columns:minmax(0,1fr);gap:28px}
+  .faqx__nav{position:static;min-width:0}
+  .faqx__browse{margin-bottom:10px}
+  .faqx__topics{
+    display:flex;
+    gap:8px;
+    overflow-x:auto;
+    scrollbar-width:none;
+    margin:0 calc(var(--gutter) * -1);
+    padding:0 var(--gutter) 4px;
+  }
+  .faqx__topics::-webkit-scrollbar{display:none}
+  .faqx__topics li{flex:none}
+  .faqx__topic{align-items:center;gap:8px;padding:9px 14px;border:1px solid var(--line-2);border-radius:999px;white-space:nowrap;font-size:14px}
+  .faqx__topic.is-active{border-color:var(--red);background:rgba(240,52,31,.1)}
 }
 
 @media (max-width:720px){
@@ -59,6 +76,12 @@
   .integration-logos img{height:20px}
 
   .testi__slide blockquote{font-size:19px}
+
+  .faqx__head{flex-direction:column;align-items:flex-start;gap:12px}
+  .faqx__item summary{gap:16px;padding:18px 0;font-size:15px}
+  .faqx__icon{width:26px;height:26px}
+  .faqx__answer{padding:0 0 20px}
+  .faqx__answer p{font-size:14.5px}
 
   .onboardingIntro h2{font-size:clamp(34px,10vw,48px)}
   .ready{grid-template-columns:1fr;gap:8px}

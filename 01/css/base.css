@@ -60,8 +60,8 @@ button{font-family:inherit}
 ::selection{background:var(--red);color:#fff}
 a{color:inherit}
 
-h1,h2,h3{margin:0;font-weight:800;letter-spacing:-.03em;line-height:1.06;color:#fff}
-h2{font-size:clamp(30px,4.4vw,50px);line-height:1.05;font-weight:800}
+h1,h2,h3{margin:0;font-weight:700;letter-spacing:-.03em;line-height:1.06;color:#fff}
+h2{font-size:clamp(30px,4.4vw,50px);line-height:1.05;font-weight:700}
 h2 span{display:block;color:var(--red)}
 h3{font-size:19px;letter-spacing:-.02em}
 

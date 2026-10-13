@@ -22,19 +22,20 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
 
   <!-- Styles (order matters: each file builds on the ones before it) -->
-  <link rel="stylesheet" href="css/base.css?v=20261013">
-  <link rel="stylesheet" href="css/components.css?v=20261013">
-  <link rel="stylesheet" href="css/layout.css?v=20261013">
-  <link rel="stylesheet" href="css/sections.css?v=20261013">
-  <link rel="stylesheet" href="css/utilities.css?v=20261013">
-  <link rel="stylesheet" href="css/responsive.css?v=20261013">
+  <link rel="stylesheet" href="css/base.css?v=20261013c">
+  <link rel="stylesheet" href="css/components.css?v=20261013c">
+  <link rel="stylesheet" href="css/layout.css?v=20261013c">
+  <link rel="stylesheet" href="css/sections.css?v=20261013c">
+  <link rel="stylesheet" href="css/utilities.css?v=20261013c">
+  <link rel="stylesheet" href="css/responsive.css?v=20261013c">
 
   <!-- Scripts (deferred: run in order once the page is parsed) -->
-  <script src="js/carousel.js?v=20261013" defer></script>
-  <script src="js/testimonials.js?v=20261013" defer></script>
-  <script src="js/form.js?v=20261013" defer></script>
-  <script src="js/video.js?v=20261013" defer></script>
-  <script src="js/main.js?v=20261013" defer></script>
+  <script src="js/carousel.js?v=20261013c" defer></script>
+  <script src="js/testimonials.js?v=20261013c" defer></script>
+  <script src="js/faq.js?v=20261013c" defer></script>
+  <script src="js/form.js?v=20261013c" defer></script>
+  <script src="js/video.js?v=20261013c" defer></script>
+  <script src="js/main.js?v=20261013c" defer></script>
 </head>
 <body>
 
@@ -551,44 +552,201 @@
     </section>
 
     <!-- ================= FAQ ================= -->
-    <section class="faq section">
+    <!-- Topic-based FAQ: a sidebar of topics and one topic's questions at a time (js/faq.js).
+         Without JavaScript every topic is shown, one after another. -->
+    <section class="faq section" id="faq">
       <div class="eyebrow no-dot">FAQ</div>
       <h2>Fair questions.<br><span>Clear answers.</span></h2>
 
-      <details>
-        <summary>Is BlinQ built for window furnishing businesses?<span class="plus">+</span></summary>
-        <p>Yes. BlinQ supports businesses working with blinds, curtains, shutters and awnings, with workflows for retailers, manufacturers, wholesalers and franchises.</p>
-      </details>
-
-      <details>
-        <summary>Can we quote at the customer’s property?<span class="plus">+</span></summary>
-        <p>Yes. Create quotations on site using your configured product pricing and options, then email the quotation to your customer.</p>
-      </details>
-
-      <details>
-        <summary>Can we use our own products and pricing?<span class="plus">+</span></summary>
-        <p>Yes. Product and pricing setup is discussed during onboarding so your quotation workflow reflects your business requirements.</p>
-      </details>
-
-      <details>
-        <summary>Can BlinQ connect with our accounting software?<span class="plus">+</span></summary>
-        <p>BlinQ offers integrations with Xero, QuickBooks and MYOB. We’ll confirm the available integration and any setup requirements during your demo.</p>
-      </details>
-
-      <details>
-        <summary>What happens after I submit the form?<span class="plus">+</span></summary>
-        <p>Your enquiry is saved, and you can choose a time using the BlinQ booking calendar. Submitting the form alone does not book a meeting.</p>
-      </details>
-
-      <details>
-        <summary>How much does it cost?<span class="plus">+</span></summary>
-        <p>Pricing depends on your plan, users, modules and setup requirements. We’ll discuss the suitable options for your business. You can also view the current pricing on the BlinQ website.</p>
-      </details>
-
-      <details>
-        <summary>Is there a free trial?<span class="plus">+</span></summary>
-        <p>BlinQ offers a seven-day free trial. A payment card is required for the trial, with billing after the trial under the applicable terms. No payment card is needed to request a demo.</p>
-      </details>
+      <div class="faqx" data-faq>
+        <nav class="faqx__nav" aria-label="FAQ topics">
+          <p class="faqx__browse">Browse by topic</p>
+          <ul class="faqx__topics">
+            <li><a class="faqx__topic is-active" href="#faq-getting-started" aria-current="true"><span>Getting started</span><span class="faqx__count">5</span></a></li>
+            <li><a class="faqx__topic" href="#faq-quoting"><span>Quoting &amp; pricing</span><span class="faqx__count">5</span></a></li>
+            <li><a class="faqx__topic" href="#faq-crm"><span>CRM, scheduling &amp; jobs</span><span class="faqx__count">5</span></a></li>
+            <li><a class="faqx__topic" href="#faq-manufacturing"><span>Manufacturing, suppliers &amp; eCommerce</span><span class="faqx__count">5</span></a></li>
+            <li><a class="faqx__topic" href="#faq-pricing"><span>Pricing, setup &amp; support</span><span class="faqx__count">7</span></a></li>
+            <li><a class="faqx__topic" href="#faq-security"><span>Security, integrations &amp; customisation</span><span class="faqx__count">3</span></a></li>
+          </ul>
+        </nav>
+        <div class="faqx__panels">
+          <section class="faqx__panel" id="faq-getting-started" aria-labelledby="faq-getting-started-title">
+            <div class="faqx__head">
+              <div>
+                <h3 id="faq-getting-started-title">Getting started</h3>
+                <p>What BlinQ is, who it’s for and how to try it.</p>
+              </div>
+              <button class="faqx__toggle" type="button" aria-expanded="false">Expand all</button>
+            </div>
+            <details class="faqx__item" open>
+              <summary><span>What is BlinQ Software?</span><i class="faqx__icon" aria-hidden="true"></i></summary>
+              <div class="faqx__answer"><p>BlinQ is an all-in-one, cloud-based business management platform designed for the window furnishing industry. It helps businesses manage customer enquiries, appointments, measurements, quotations, jobs, suppliers, purchase orders, invoices and payments from one central system.</p></div>
+            </details>
+            <details class="faqx__item">
+              <summary><span>Who is BlinQ Software designed for?</span><i class="faqx__icon" aria-hidden="true"></i></summary>
+              <div class="faqx__answer"><p>BlinQ is built for blinds, curtains, shutters and awnings retailers, manufacturers, wholesalers, dealers and franchise businesses. Whether you operate a small showroom or manage multiple teams and locations, BlinQ can be configured to suit your workflow.</p></div>
+            </details>
+            <details class="faqx__item">
+              <summary><span>Can I try BlinQ Software before subscribing?</span><i class="faqx__icon" aria-hidden="true"></i></summary>
+              <div class="faqx__answer"><p>Yes! BlinQ offers a 7-day free trial so you can explore the software before committing. A valid payment card is required to activate your trial, but you won’t be charged during the trial period. Subscription billing begins after the trial unless you cancel before it ends.</p></div>
+            </details>
+            <details class="faqx__item">
+              <summary><span>Do I need technical knowledge to use BlinQ?</span><i class="faqx__icon" aria-hidden="true"></i></summary>
+              <div class="faqx__answer"><p>Not at all. BlinQ is designed for everyday business users, including sales representatives, estimators, office administrators and installers. Our team can also provide one-on-one demonstrations and training to help you get started.</p></div>
+            </details>
+            <details class="faqx__item">
+              <summary><span>Can I use BlinQ on my phone, tablet and computer?</span><i class="faqx__icon" aria-hidden="true"></i></summary>
+              <div class="faqx__answer"><p>Yes. BlinQ is cloud-based and can be accessed from compatible smartphones, tablets, laptops and desktop computers with an internet connection. Your team can work from the office, showroom or customer site.</p></div>
+            </details>
+          </section>
+          <section class="faqx__panel" id="faq-quoting" aria-labelledby="faq-quoting-title">
+            <div class="faqx__head">
+              <div>
+                <h3 id="faq-quoting-title">Quoting &amp; pricing</h3>
+                <p>On-site quotes, supplier price lists, markups and products.</p>
+              </div>
+              <button class="faqx__toggle" type="button" aria-expanded="false">Expand all</button>
+            </div>
+            <details class="faqx__item" open>
+              <summary><span>Can BlinQ generate quotations while I’m at a customer’s home?</span><i class="faqx__icon" aria-hidden="true"></i></summary>
+              <div class="faqx__answer"><p>Absolutely! Your sales representatives can enter measurements, select products, fabrics, colours and options, and generate professional quotations directly from the customer’s location. This reduces manual calculations and the need to return to the office to prepare quotes.</p></div>
+            </details>
+            <details class="faqx__item">
+              <summary><span>Can BlinQ calculate prices using my supplier’s price lists?</span><i class="faqx__icon" aria-hidden="true"></i></summary>
+              <div class="faqx__answer"><p>Yes. BlinQ can be configured with supplier price grids, product options, pricing rules, markups and discounts. Once configured, the software calculates prices using your business’s pricing structure, helping reduce manual errors.</p></div>
+            </details>
+            <details class="faqx__item">
+              <summary><span>Can I manage different markups and discounts for different products?</span><i class="faqx__icon" aria-hidden="true"></i></summary>
+              <div class="faqx__answer"><p>Yes. You can configure pricing and markup rules for different product groups and apply permitted adjustments when preparing quotations. This gives you control over your selling prices and profit margins.</p></div>
+            </details>
+            <details class="faqx__item">
+              <summary><span>Does BlinQ support different types of window furnishings?</span><i class="faqx__icon" aria-hidden="true"></i></summary>
+              <div class="faqx__answer"><p>Yes. BlinQ supports a wide range of products, including roller blinds, Roman blinds, Venetian blinds, vertical blinds, honeycomb blinds, curtains, shutters, awnings, outdoor blinds and more. Product configuration depends on your suppliers and account setup.</p></div>
+            </details>
+            <details class="faqx__item">
+              <summary><span>Can I convert an approved quotation into a job?</span><i class="faqx__icon" aria-hidden="true"></i></summary>
+              <div class="faqx__answer"><p>Yes. Once a quotation is approved, it can be progressed into your job management workflow without recreating the entire order. Your team can then manage the next steps, including ordering, production, installation and completion.</p></div>
+            </details>
+          </section>
+          <section class="faqx__panel" id="faq-crm" aria-labelledby="faq-crm-title">
+            <div class="faqx__head">
+              <div>
+                <h3 id="faq-crm-title">CRM, scheduling &amp; jobs</h3>
+                <p>Customers, appointments, calendars and job tracking.</p>
+              </div>
+              <button class="faqx__toggle" type="button" aria-expanded="false">Expand all</button>
+            </div>
+            <details class="faqx__item" open>
+              <summary><span>Does BlinQ include a CRM to manage customers and enquiries?</span><i class="faqx__icon" aria-hidden="true"></i></summary>
+              <div class="faqx__answer"><p>Yes. BlinQ includes customer relationship management tools that help you organise enquiries, customer details, communication history, quotations and jobs in one place. Your team can access relevant customer information without searching through multiple systems.</p></div>
+            </details>
+            <details class="faqx__item">
+              <summary><span>Can I schedule appointments and assign them to staff?</span><i class="faqx__icon" aria-hidden="true"></i></summary>
+              <div class="faqx__answer"><p>Yes. BlinQ provides appointment scheduling and calendar management tools. You can organise sales consultations, measurements and installations, assign appointments to team members and keep your schedule organised.</p></div>
+            </details>
+            <details class="faqx__item">
+              <summary><span>Does BlinQ integrate with Google Calendar?</span><i class="faqx__icon" aria-hidden="true"></i></summary>
+              <div class="faqx__answer"><p>Yes. BlinQ supports Google Calendar integration, allowing your team to connect supported appointments and scheduling activities with their calendars.</p></div>
+            </details>
+            <details class="faqx__item">
+              <summary><span>Can I track the progress of customer jobs?</span><i class="faqx__icon" aria-hidden="true"></i></summary>
+              <div class="faqx__answer"><p>Yes. BlinQ’s job management dashboard helps you monitor jobs through different stages, such as approved, check measurement, on hold, ready to fit, installed and completed. Job statuses can be configured to match your business processes.</p></div>
+            </details>
+            <details class="faqx__item">
+              <summary><span>Can BlinQ send appointment reminders and customer follow-ups?</span><i class="faqx__icon" aria-hidden="true"></i></summary>
+              <div class="faqx__answer"><p>Yes. BlinQ provides email and SMS communication options to help businesses send reminders, updates and follow-ups. Automation options and SMS charges may vary depending on your setup.</p></div>
+            </details>
+          </section>
+          <section class="faqx__panel" id="faq-manufacturing" aria-labelledby="faq-manufacturing-title">
+            <div class="faqx__head">
+              <div>
+                <h3 id="faq-manufacturing-title">Manufacturing, suppliers &amp; eCommerce</h3>
+                <p>Production, purchase orders, dealer portals and online sales.</p>
+              </div>
+              <button class="faqx__toggle" type="button" aria-expanded="false">Expand all</button>
+            </div>
+            <details class="faqx__item" open>
+              <summary><span>Can manufacturers use BlinQ to manage production?</span><i class="faqx__icon" aria-hidden="true"></i></summary>
+              <div class="faqx__answer"><p>Yes. BlinQ offers manufacturing-focused features, including order management, production workflows, worksheets, labels and reporting. The available functionality depends on the manufacturing plan and configuration.</p></div>
+            </details>
+            <details class="faqx__item">
+              <summary><span>Can I create and manage supplier purchase orders?</span><i class="faqx__icon" aria-hidden="true"></i></summary>
+              <div class="faqx__answer"><p>Yes. BlinQ helps businesses generate purchase orders from job information, manage suppliers and organise purchasing activities. This reduces duplicate data entry and helps teams keep track of orders.</p></div>
+            </details>
+            <details class="faqx__item">
+              <summary><span>Can wholesalers provide their dealers with their own quoting portal?</span><i class="faqx__icon" aria-hidden="true"></i></summary>
+              <div class="faqx__answer"><p>Yes. BlinQ’s wholesale and dealer solutions allow businesses to provide dealers with access to configured products and pricing through dedicated portals. Branding, dealer pricing and access permissions can be tailored to the wholesale setup.</p></div>
+            </details>
+            <details class="faqx__item">
+              <summary><span>Can I sell blinds and curtains online using BlinQ?</span><i class="faqx__icon" aria-hidden="true"></i></summary>
+              <div class="faqx__answer"><p>Yes. BlinQ offers eCommerce solutions that allow customers to select window furnishing products, enter measurements, choose available options and obtain pricing online. Solutions can be integrated into an existing website or developed as part of a complete online store.</p></div>
+            </details>
+            <details class="faqx__item">
+              <summary><span>Can BlinQ connect with accounting and payment systems?</span><i class="faqx__icon" aria-hidden="true"></i></summary>
+              <div class="faqx__answer"><p>Yes. BlinQ supports integrations with accounting platforms such as Xero, QuickBooks and MYOB, along with payment solutions including Stripe. Integration availability and setup requirements depend on your selected plan and configuration.</p></div>
+            </details>
+          </section>
+          <section class="faqx__panel" id="faq-pricing" aria-labelledby="faq-pricing-title">
+            <div class="faqx__head">
+              <div>
+                <h3 id="faq-pricing-title">Pricing, setup &amp; support</h3>
+                <p>Plans, users, contracts, onboarding and training.</p>
+              </div>
+              <button class="faqx__toggle" type="button" aria-expanded="false">Expand all</button>
+            </div>
+            <details class="faqx__item" open>
+              <summary><span>How much does BlinQ Software cost?</span><i class="faqx__icon" aria-hidden="true"></i></summary>
+              <div class="faqx__answer"><p>BlinQ offers subscription plans based on your business type, required features and number of users. Retail plans currently start at A$450 per month for three users, while manufacturing and wholesale plans start at A$750 per month for ten users, based on our published Australian pricing. Visit our <a href="https://www.blinq.com.au/pricing/?slug=pricing" target="_blank" rel="noopener noreferrer">pricing page</a> for current plans and applicable setup fees.</p></div>
+            </details>
+            <details class="faqx__item">
+              <summary><span>Is there a minimum number of users?</span><i class="faqx__icon" aria-hidden="true"></i></summary>
+              <div class="faqx__answer"><p>Yes. The minimum number of licences depends on your plan. Our standard Retail plan requires a minimum of three users, while Manufacturing and Wholesale plans have a minimum of ten users.</p></div>
+            </details>
+            <details class="faqx__item">
+              <summary><span>Do I need to sign a long-term contract?</span><i class="faqx__icon" aria-hidden="true"></i></summary>
+              <div class="faqx__answer"><p>BlinQ offers monthly subscription plans without a mandatory annual commitment for standard plans. A 30-day cancellation notice applies. Please review the applicable subscription terms for your account.</p></div>
+            </details>
+            <details class="faqx__item">
+              <summary><span>How long does it take to set up my BlinQ account?</span><i class="faqx__icon" aria-hidden="true"></i></summary>
+              <div class="faqx__answer"><p>Your account can be activated quickly, while the complete configuration depends on your suppliers, products, price lists and workflow requirements. Standard onboarding can often be completed within approximately 10 business days after all required information is supplied. More complex configurations may take longer.</p></div>
+            </details>
+            <details class="faqx__item">
+              <summary><span>Will BlinQ help me import my existing product and supplier pricing?</span><i class="faqx__icon" aria-hidden="true"></i></summary>
+              <div class="faqx__answer"><p>Yes. Our onboarding team can assist with configuring supplier information, products, fabrics, colours, pricing grids and business-specific rules. The scope of data entry and any applicable setup fees depend on your selected plan.</p></div>
+            </details>
+            <details class="faqx__item">
+              <summary><span>Does BlinQ provide training and ongoing support?</span><i class="faqx__icon" aria-hidden="true"></i></summary>
+              <div class="faqx__answer"><p>Yes. BlinQ provides onboarding assistance, one-on-one online training options and ongoing support. You can also watch our <a href="https://www.youtube.com/@BlinQ-Software" target="_blank" rel="noopener noreferrer">training videos</a> on YouTube.</p></div>
+            </details>
+            <details class="faqx__item">
+              <summary><span>Can I upgrade my plan or add more users as my business grows?</span><i class="faqx__icon" aria-hidden="true"></i></summary>
+              <div class="faqx__answer"><p>Yes. BlinQ is designed to grow with your business. You can discuss additional licences, plan upgrades and extra features with our team as your operational requirements change.</p></div>
+            </details>
+          </section>
+          <section class="faqx__panel" id="faq-security" aria-labelledby="faq-security-title">
+            <div class="faqx__head">
+              <div>
+                <h3 id="faq-security-title">Security, integrations &amp; customisation</h3>
+                <p>Data protection, API access and tailored workflows.</p>
+              </div>
+              <button class="faqx__toggle" type="button" aria-expanded="false">Expand all</button>
+            </div>
+            <details class="faqx__item" open>
+              <summary><span>Is my business and customer data secure with BlinQ?</span><i class="faqx__icon" aria-hidden="true"></i></summary>
+              <div class="faqx__answer"><p>BlinQ uses security measures and access controls designed to protect business and customer information. Access to your account is managed through authorised users and permissions. For further details about data handling, please review our <a href="https://www.blinq.com.au/privacy-policy.html" target="_blank" rel="noopener noreferrer">Privacy Policy</a> or contact our support team.</p></div>
+            </details>
+            <details class="faqx__item">
+              <summary><span>Does BlinQ offer API access and custom integrations?</span><i class="faqx__icon" aria-hidden="true"></i></summary>
+              <div class="faqx__answer"><p>Yes. BlinQ offers API and custom integration options for businesses that need to connect other platforms, suppliers or external systems. API access, available data and integration requirements are reviewed based on your business needs and the applicable access permissions. See our <a href="https://api.blinq.com.au/documentation/" target="_blank" rel="noopener noreferrer">API documentation</a>.</p></div>
+            </details>
+            <details class="faqx__item">
+              <summary><span>Can BlinQ be customised to suit the way my business operates?</span><i class="faqx__icon" aria-hidden="true"></i></summary>
+              <div class="faqx__answer"><p>Yes. BlinQ provides configurable products, pricing rules, workflows, job statuses and user access options. For more specialised requirements, our team can assess custom development or integrations, with scope, cost and timeframes agreed before work begins.</p></div>
+            </details>
+          </section>
+        </div>
+      </div>
     </section>
 
     <!-- ================= FINAL CTA ================= -->

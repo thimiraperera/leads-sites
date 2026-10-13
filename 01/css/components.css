@@ -1,7 +1,7 @@
 /* ============================================================
    BlinQ leads site · components.css
-   Reusable pieces: buttons, text links, the demo form,
-   the steps carousel and the FAQ accordion.
+   Reusable pieces: buttons, text links, the demo form
+   and the steps carousel.
    ============================================================ */
 
 /* ============================================================
@@ -74,7 +74,7 @@
 
 .formTitle{
   font-size:22px;
-  font-weight:700;
+  font-weight:600;
   margin:0 0 6px;
   letter-spacing:-.025em;
   color:#111;
@@ -287,7 +287,7 @@
 }
 .step__icon svg{width:18px;height:18px;display:block;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
 .step__n{font-size:15px;font-weight:600;color:var(--red);font-variant-numeric:tabular-nums}
-.step h3{margin:18px 0 0;font-size:18px;font-weight:700;line-height:1.2;letter-spacing:-.015em;color:#fff}
+.step h3{margin:18px 0 0;font-size:18px;font-weight:600;line-height:1.2;letter-spacing:-.015em;color:#fff}
 .step p{margin:8px 0 0;font-size:15px;line-height:22px;color:var(--muted)}
 
 /* Controls: arrows either side of the progress dots */
@@ -327,45 +327,3 @@
 .flow__arrow:focus-visible,.flow__dot:focus-visible{outline:2px solid var(--red);outline-offset:2px}
 @media (pointer:coarse){ .flow__dot{pointer-events:none} }
 @keyframes fill{from{transform:scaleX(0)}to{transform:scaleX(1)}}
-
-/* ============================================================
-   FAQ ACCORDION (native <details>)
-   ============================================================ */
-details{
-  border-top:1px solid var(--line);
-  padding:24px 0;
-}
-details:last-of-type{border-bottom:1px solid var(--line)}
-summary{
-  display:flex;
-  align-items:flex-start;
-  justify-content:space-between;
-  gap:20px;
-  cursor:pointer;
-  list-style:none;
-  font-size:15px;
-  font-weight:700;
-  letter-spacing:-.01em;
-  color:#fff;
-  transition:color .2s ease;
-}
-summary::-webkit-details-marker{display:none}
-summary:hover{color:var(--red)}
-summary .plus{
-  flex:0 0 auto;
-  font-size:18px;
-  font-weight:400;
-  line-height:1;
-  color:var(--red);
-  transition:transform .3s var(--ease);
-}
-details[open] summary .plus{transform:rotate(45deg)}
-details p{
-  margin:16px 0 0;
-  max-width:760px;
-  font-size:14.5px;
-  line-height:1.75;
-  color:var(--muted);
-  animation:fadeUp .32s var(--ease);
-}
-@keyframes fadeUp{from{opacity:0;transform:translateY(-5px)}to{opacity:1;transform:none}}

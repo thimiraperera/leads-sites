@@ -8,16 +8,17 @@ Built from `Blinq_leads_site.html`, split into separate files with the same look
 ```
 index.html                 The page (all copy and content lives here)
 css/base.css               Design tokens (:root), reset, typography, eyebrow label
-css/components.css         Buttons, text link, demo form, steps carousel, FAQ accordion
+css/components.css         Buttons, text link, demo form, steps carousel
 css/layout.css             Header, section container, footer, mobile sticky CTA
 css/sections.css           One block per page section, in page order
 css/utilities.css          Scroll-reveal classes added by JavaScript
 css/responsive.css         Breakpoints (1080 / 900 / 720 / 640 / 560) and reduced motion
 js/carousel.js             18-step carousel: timer dots, arrows, drag, stops at the last card
 js/testimonials.js         Customer stories: tabs, arrows, 7-second auto-rotation
+js/faq.js                  FAQ: topic switching, Expand all / Collapse all
 js/form.js                 Business-type choice, step 2 reveal, submit placeholder
 js/video.js                Inline YouTube player in the hero
-js/main.js                 Header state, mobile CTA, FAQ, scroll reveal
+js/main.js                 Header state, mobile CTA, scroll reveal
 assets/img/                Logos, favicon, social image, integration wordmarks, swatches
 assets/img/icons/          Small UI icons used from CSS
 ```
@@ -40,6 +41,10 @@ files for 10 minutes; a new `?v=` makes visitors fetch the updated files straigh
   the ids in step (`testi-N` / `testi-tab-N`) when adding or removing one. Only quotes published on
   blinq.com.au are used. A client logo goes in `<span class="testi__logo">` (shown on a white tile);
   without a logo, use `<span class="testi__mono">` with the client's initials.
+- **FAQ**: 30 questions in 6 topics. Each topic is a `<section class="faqx__panel" id="faq-...">` with
+  a matching link in the topic list (`href="#faq-..."`); update the number in `faqx__count` when you
+  add or remove a question. Each question is a `<details class="faqx__item">`; the first in each topic
+  starts open. Linking to `#faq-pricing` (or any topic id) opens that topic.
 - **Video**: change `data-video-id` on `#videoCover` in `index.html`.
 - **Colours and fonts**: `:root` tokens at the top of `css/base.css`.
 - **Demo form**: `js/form.js` only shows a confirmation. Wire the submit handler to your CRM or form

@@ -1,0 +1,720 @@
+/* ============================================================
+   BlinQ leads site · sections.css
+   One block per page section, in page order:
+   hero, video preview, industry strip, booking, pain list,
+   connected workflow, testimonial, onboarding, FAQ, final CTA.
+   ============================================================ */
+
+/* ============================================================
+   HERO
+   ============================================================ */
+.hero{
+  position:relative;
+  max-width:1200px;
+  margin:0 auto;
+  padding:clamp(48px,6vw,84px) clamp(24px,5vw,64px) clamp(48px,6vw,80px);
+  text-align:center;
+}
+.hero h1{
+  margin:26px auto 0;
+  max-width:22ch;
+  font-family:var(--sans);
+  font-weight:800;
+  font-size:clamp(40px,7.4vw,82px);
+  line-height:1.02;
+  letter-spacing:-.045em;
+  color:#fff;
+}
+.hero h1 span{display:block;color:var(--red)}
+
+.hero .intro{
+  margin:26px auto 0;
+  max-width:720px;
+  font-size:clamp(16px,1.6vw,18px);
+  line-height:1.55;
+  letter-spacing:-.005em;
+  color:var(--muted);
+}
+.hero .intro br{display:none}
+@media (min-width:640px){ .hero .intro br{display:block} }
+
+.hero .button{margin-top:44px}
+.hero .micro{
+  margin:20px 0 0;
+  font-size:13px;
+  color:var(--muted-2);
+}
+
+/* ============================================================
+   VIDEO PREVIEW
+   ============================================================ */
+.video{
+  margin:clamp(44px,5vw,64px) auto 0;
+  max-width:940px;
+  position:relative;
+}
+.video::before{
+  content:"";
+  position:absolute;
+  inset:-40px -60px;
+  background:radial-gradient(60% 75% at 50% 55%, rgba(240,52,31,.22), rgba(240,52,31,0) 68%);
+  pointer-events:none;
+  z-index:0;
+}
+
+.videoCover{
+  position:relative;
+  z-index:1;
+  display:block;
+  width:100%;
+  padding:0;
+  border:1px solid var(--line);
+  border-radius:14px;
+  background:
+    radial-gradient(80% 100% at 50% 100%, #1A0E0A 0%, #0F0F0F 62%, #0A0A0A 100%);
+  overflow:hidden;
+  cursor:pointer;
+  text-align:left;
+  color:inherit;
+  font:inherit;
+  box-shadow:
+    0 1px 0 rgba(255,255,255,.04) inset,
+    0 40px 90px -40px rgba(240,52,31,.28),
+    0 60px 110px -60px rgba(0,0,0,.85);
+  transition:transform .4s var(--ease),box-shadow .4s var(--ease);
+}
+.videoCover:hover{
+  transform:translateY(-3px);
+  box-shadow:
+    0 1px 0 rgba(255,255,255,.04) inset,
+    0 50px 100px -40px rgba(240,52,31,.4),
+    0 70px 120px -60px rgba(0,0,0,.85);
+}
+
+.previewtop{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  padding:14px 22px;
+  font-size:10.5px;
+  font-weight:600;
+  letter-spacing:.14em;
+  color:var(--muted-2);
+  text-transform:uppercase;
+}
+.previewtop .live{color:var(--muted-2);letter-spacing:.14em}
+
+.screen{
+  position:relative;
+  aspect-ratio:16/10;
+  perspective:1400px;
+  overflow:hidden;
+}
+
+/* App mockup shown before the video plays */
+.mockup{
+  position:absolute;
+  inset:0 0 -12% 8%;
+  display:grid;
+  grid-template-columns:190px 1fr;
+  background:#FFFFFF;
+  border-radius:10px 10px 0 0;
+  box-shadow:
+    0 30px 60px -20px rgba(0,0,0,.6),
+    0 0 0 1px rgba(0,0,0,.04);
+  transform:rotateY(-9deg) rotateX(4deg) rotateZ(-.4deg);
+  transform-origin:50% 100%;
+  transition:opacity .35s ease;
+  overflow:hidden;
+}
+.screen.playing .mockup{opacity:0;pointer-events:none}
+
+.mockup aside{
+  display:flex;
+  flex-direction:column;
+  gap:2px;
+  padding:20px 14px;
+  border-right:1px solid #EFEFEF;
+}
+.mockup .brandrow{
+  display:flex;
+  align-items:center;
+  gap:6px;
+  margin:0 0 22px 10px;
+  font-size:17px;
+  font-weight:800;
+  letter-spacing:-.03em;
+  color:#111;
+}
+.mockup .brandrow i{
+  width:15px;height:15px;
+  border-radius:4px;
+  background:var(--red);
+  display:inline-block;
+  position:relative;
+}
+.mockup .brandrow i::after{
+  content:"";
+  position:absolute;
+  top:50%;left:50%;
+  width:5px;height:5px;
+  border-radius:50%;
+  background:#fff;
+  transform:translate(-50%,-50%);
+}
+.mockup aside b{
+  font-size:9.5px;
+  font-weight:600;
+  letter-spacing:.16em;
+  text-transform:uppercase;
+  color:#A8A8A8;
+  padding:0 10px 10px;
+}
+.mockup aside span{
+  font-size:13px;
+  color:#3A3A3A;
+  padding:9px 12px;
+  border-radius:7px;
+  font-weight:500;
+}
+.mockup aside span.active{
+  background:var(--red-soft);
+  color:var(--red);
+  font-weight:600;
+}
+
+.mockup .quote{
+  padding:24px 26px 20px;
+  color:#111;
+  display:flex;
+  flex-direction:column;
+  min-width:0;
+}
+.mockup .quotehead{
+  display:flex;
+  align-items:flex-start;
+  justify-content:space-between;
+  gap:16px;
+  margin-bottom:14px;
+}
+.mockup .quotehead small{
+  display:block;
+  font-size:9.5px;
+  font-weight:700;
+  letter-spacing:.16em;
+  color:var(--red);
+  text-transform:uppercase;
+}
+.mockup .quotehead h3{
+  margin:7px 0 0;
+  font-size:22px;
+  font-weight:700;
+  letter-spacing:-.028em;
+  color:#111;
+  line-height:1.15;
+}
+.mockup .approved{
+  flex:0 0 auto;
+  padding:5px 11px;
+  border-radius:999px;
+  background:var(--ok-bg);
+  color:var(--ok-text);
+  font-size:11px;
+  font-weight:600;
+}
+
+.mockup .product{
+  display:flex;
+  align-items:center;
+  gap:14px;
+  padding:12px 16px;
+  border:1px solid #EEEEEE;
+  border-radius:9px;
+  background:#fff;
+  margin-bottom:8px;
+}
+.mockup .product > .icon{
+  width:44px;height:44px;
+  border-radius:6px;
+  flex:0 0 auto;
+  object-fit:cover;
+}
+.mockup .product .meta{flex:1;min-width:0}
+.mockup .product .meta b{
+  display:block;
+  font-size:13.5px;
+  font-weight:700;
+  color:#111;
+}
+.mockup .product .meta p{
+  margin:3px 0 0;
+  font-size:11.5px;
+  color:#9A9A9A;
+}
+.mockup .product .check{
+  flex:0 0 auto;
+  font-size:14px;
+  color:#111;
+  font-weight:600;
+}
+
+.mockup .workflow{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:6px;
+  margin-top:auto;
+  padding-top:16px;
+}
+.mockup .workflow span{
+  flex:1;
+  text-align:center;
+  padding:7px 8px;
+  border:1px solid #E8E8E8;
+  border-radius:6px;
+  background:#fff;
+  font-size:11px;
+  font-weight:500;
+  color:#5A5A5A;
+}
+.mockup .workflow i{
+  flex:0 0 auto;
+  width:16px;
+  height:1px;
+  background:var(--red);
+  position:relative;
+}
+.mockup .workflow i::after{
+  content:"";
+  position:absolute;
+  right:0;top:50%;
+  width:4px;height:4px;
+  border-top:1px solid var(--red);
+  border-right:1px solid var(--red);
+  transform:translateY(-50%) rotate(45deg);
+}
+
+/* Play / close controls and the YouTube frame */
+.play{
+  position:absolute;
+  left:50%;
+  top:50%;
+  transform:translate(-50%,-50%);
+  width:88px;
+  height:88px;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:0;
+  border:none;
+  cursor:pointer;
+  background:var(--red);
+  color:#fff;
+  box-shadow:
+    0 0 0 14px rgba(240,52,31,.16),
+    0 0 0 28px rgba(240,52,31,.06),
+    0 20px 50px -10px rgba(240,52,31,.55);
+  transition:transform .3s var(--ease),background .25s ease,box-shadow .3s ease,opacity .25s ease;
+  z-index:4;
+}
+.play svg{width:30px;height:30px;margin-left:5px;display:block}
+.videoCover:hover .play{
+  transform:translate(-50%,-50%) scale(1.05);
+  background:var(--red-2);
+  box-shadow:
+    0 0 0 18px rgba(240,52,31,.2),
+    0 0 0 34px rgba(240,52,31,.08),
+    0 24px 60px -10px rgba(240,52,31,.65);
+}
+.videoCover.playing .play{opacity:0;pointer-events:none}
+
+.videoClose{
+  position:absolute;
+  top:64px;
+  right:22px;
+  z-index:5;
+  display:none;
+  align-items:center;
+  gap:8px;
+  padding:9px 16px;
+  border-radius:999px;
+  background:rgba(0,0,0,.75);
+  -webkit-backdrop-filter:blur(10px);
+  backdrop-filter:blur(10px);
+  border:1px solid rgba(255,255,255,.18);
+  color:#fff;
+  font-size:12px;
+  font-weight:600;
+  cursor:pointer;
+  transition:background .2s ease,border-color .2s ease;
+}
+.videoClose:hover{background:var(--red);border-color:var(--red)}
+.videoCover.playing .videoClose{display:inline-flex}
+
+.screen iframe{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  border:0;
+  display:none;
+  background:#000;
+  z-index:3;
+}
+.screen.playing iframe{display:block}
+
+.videofoot{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:16px;
+  flex-wrap:wrap;
+  padding:16px 22px;
+  font-size:12.5px;
+  color:var(--text-2);
+  position:relative;
+  z-index:5;
+}
+.videofoot small{color:var(--muted-2);font-size:11.5px}
+
+/* ============================================================
+   INDUSTRY STRIP
+   ============================================================ */
+.industry{
+  padding:clamp(28px,4vw,42px) clamp(24px,5vw,64px);
+  background:var(--bg);
+  border-top:1px solid var(--line);
+  border-bottom:1px solid var(--line);
+  text-align:center;
+}
+.industry .eyebrow{margin-bottom:18px}
+.industry div{
+  display:flex;
+  flex-wrap:wrap;
+  align-items:center;
+  justify-content:center;
+  gap:clamp(16px,3.5vw,28px);
+  font-size:clamp(18px,2.4vw,26px);
+  font-weight:600;
+  letter-spacing:-.02em;
+  color:#fff;
+}
+.industry i{font-style:normal;color:var(--red);font-size:.5em}
+
+/* ============================================================
+   BOOKING (intro column; the form card lives in components.css)
+   ============================================================ */
+.booking{
+  display:grid;
+  grid-template-columns:1fr 1.05fr;
+  gap:clamp(32px,5vw,80px);
+  align-items:start;
+}
+.bookintro{padding-top:8px}
+.bookintro h2{margin-top:20px}
+.bookintro > p{
+  margin:22px 0 0;
+  max-width:44ch;
+  font-size:15px;
+  line-height:1.7;
+  color:var(--muted);
+}
+.bookintro ul{
+  list-style:none;
+  margin:28px 0 0;
+  padding:0;
+  display:grid;
+  gap:12px;
+}
+.bookintro li{
+  position:relative;
+  padding-left:28px;
+  font-size:14.5px;
+  color:var(--text-2);
+}
+.bookintro li::before{
+  content:"✓";
+  position:absolute;
+  left:0;
+  top:-1px;
+  color:var(--red);
+  font-weight:700;
+}
+.booknote{
+  margin-top:28px;
+  font-size:12.5px;
+  color:var(--muted-2);
+}
+.booknote span{margin:0 8px;color:var(--line-3)}
+
+/* ============================================================
+   PAIN LIST
+   ============================================================ */
+.gut h2{margin-top:20px}
+.painlist{
+  display:flex;
+  flex-direction:column;
+  margin-top:44px;
+  max-width:760px;
+}
+.painlist > div{
+  display:grid;
+  grid-template-columns:50px 1fr;
+  gap:20px;
+  align-items:center;
+  padding:22px 0;
+  border-top:1px solid var(--line);
+}
+.painlist > div:last-child{border-bottom:1px solid var(--line)}
+.painlist span{
+  font-size:12px;
+  font-weight:700;
+  letter-spacing:.1em;
+  color:var(--red);
+}
+.painlist p{
+  margin:0;
+  font-size:15px;
+  line-height:1.55;
+  color:var(--text-2);
+  letter-spacing:-.005em;
+}
+.gut .textlink{border:none;padding:0}
+
+/* ============================================================
+   CONNECTED WORKFLOW (carousel lives in components.css)
+   ============================================================ */
+.connected{text-align:center}
+.connected h2{margin-top:20px}
+
+/* Integration box below the carousel */
+.integration{
+  margin:56px 0 0;
+  padding:26px 28px;
+  text-align:center;
+  border:1px solid var(--line);
+  border-radius:12px;
+  font-size:14px;
+  line-height:1.9;
+  color:var(--muted);
+  background:rgba(255,255,255,.01);
+}
+.integration p{margin:0}
+.integration-logos{
+  list-style:none;
+  margin:14px 0 0;
+  padding:0;
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+  gap:12px;
+}
+.integration-logos li{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  height:48px;
+  padding:0 18px;
+  background:#fff;
+  border-radius:8px;
+}
+.integration-logos img{height:24px;width:auto}
+.integration small{
+  display:block;
+  margin-top:14px;
+  font-size:12px;
+  color:var(--faint);
+}
+
+/* ============================================================
+   TESTIMONIAL
+   ============================================================ */
+.testimonial{
+  display:flex;
+  justify-content:center;
+}
+.testimonialCard{
+  width:100%;
+  max-width:1000px;
+  padding:56px 40px;
+  background:linear-gradient(180deg, rgba(240,52,31,.05), rgba(240,52,31,.01));
+  border:1px solid rgba(240,52,31,.22);
+  border-radius:16px;
+  text-align:center;
+  box-shadow:0 0 80px -30px rgba(240,52,31,.35) inset;
+}
+.testimonialCard .eyebrow{margin-bottom:28px}
+.testimonialCard blockquote{
+  margin:0 auto;
+  max-width:760px;
+  font-family:var(--sans);
+  font-style:normal;
+  font-weight:700;
+  font-size:clamp(20px,2.6vw,28px);
+  line-height:1.35;
+  letter-spacing:-.02em;
+  color:#fff;
+}
+.testimonialCard .person{
+  display:inline-flex;
+  align-items:center;
+  gap:14px;
+  margin-top:32px;
+  padding:8px 16px 8px 8px;
+  border-radius:999px;
+  background:rgba(255,255,255,.03);
+  border:1px solid rgba(255,255,255,.06);
+}
+.testimonialCard .avatar{
+  width:38px;height:38px;
+  border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  background:#2A1310;
+  color:#F4A296;
+  font-size:12.5px;
+  font-weight:700;
+  letter-spacing:.02em;
+}
+.testimonialCard .person div{text-align:left}
+.testimonialCard .person b{display:block;font-size:13.5px;color:#fff;font-weight:600}
+.testimonialCard .person p{margin:1px 0 0;font-size:12px;color:var(--muted)}
+.testimonialCard .textlink{margin-top:32px}
+
+/* ============================================================
+   ONBOARDING
+   ============================================================ */
+.onboarding{
+  display:grid;
+  grid-template-columns:.9fr 1.1fr;
+  gap:clamp(32px,5vw,80px);
+  align-items:start;
+}
+.onboardingIntro h2{
+  font-size:clamp(38px,5vw,64px);
+  line-height:1.02;
+  letter-spacing:-.04em;
+  color:#fff;
+}
+.onboardingIntro h2 em{
+  font-family:var(--serif);
+  font-style:italic;
+  font-weight:400;
+  font-size:1.02em;
+  letter-spacing:-.015em;
+  color:var(--red);
+}
+.onboardingIntro p{
+  margin:32px 0 0;
+  max-width:44ch;
+  font-size:15px;
+  line-height:1.75;
+  color:var(--muted);
+}
+
+.onboardingSteps{display:flex;flex-direction:column;gap:12px}
+.onboardingStep{
+  display:grid;
+  grid-template-columns:auto 1fr auto;
+  gap:22px;
+  align-items:start;
+  padding:22px 26px;
+  background:var(--card);
+  border:1px solid var(--line);
+  border-radius:14px;
+  transition:border-color .25s ease,background .25s ease;
+}
+.onboardingStep:hover{border-color:var(--line-2)}
+.onboardingStep.last{
+  border-color:var(--red);
+  background:linear-gradient(180deg, rgba(240,52,31,.06), rgba(240,52,31,.02));
+}
+.onboardingNumber{
+  padding-top:2px;
+  font-size:12px;
+  font-weight:700;
+  letter-spacing:.1em;
+  color:var(--red);
+}
+.onboardingStep h3{
+  font-size:16px;
+  font-weight:700;
+  letter-spacing:-.015em;
+  color:#fff;
+}
+.onboardingStep p{
+  margin:8px 0 0;
+  font-size:13.5px;
+  line-height:1.65;
+  color:var(--muted);
+}
+.onboardingArrow{
+  padding-top:4px;
+  font-size:16px;
+  color:var(--faint);
+  transition:color .2s ease;
+}
+.onboardingStep.last .onboardingArrow{color:var(--red)}
+.onboardingPricing{margin-top:12px;font-size:12.5px}
+
+.ready{
+  display:grid;
+  grid-template-columns:auto 1fr;
+  gap:16px;
+  align-items:baseline;
+  margin-top:16px;
+  padding:0 4px;
+}
+.ready b{
+  font-size:10.5px;
+  font-weight:700;
+  letter-spacing:.18em;
+  color:var(--red);
+  white-space:nowrap;
+}
+.ready p{
+  margin:0;
+  font-size:13.5px;
+  line-height:1.6;
+  color:var(--muted);
+}
+
+/* ============================================================
+   FAQ (accordion styles live in components.css)
+   ============================================================ */
+.faq h2{margin-top:22px;margin-bottom:52px}
+
+/* ============================================================
+   FINAL CTA
+   ============================================================ */
+.final{
+  text-align:center;
+  padding-top:clamp(80px,10vw,140px);
+  padding-bottom:clamp(60px,8vw,110px);
+}
+.final .eyebrow{margin-bottom:26px}
+.final h2{
+  margin:0 auto;
+  max-width:900px;
+  font-size:clamp(32px,4.6vw,54px);
+  letter-spacing:-.035em;
+  line-height:1.08;
+}
+.final > p{
+  margin:26px auto 0;
+  max-width:640px;
+  font-size:15px;
+  line-height:1.65;
+  color:var(--muted);
+}
+.final .button{margin-top:34px}
+.trial{
+  display:block;
+  margin-top:20px;
+  font-size:13px;
+  color:var(--muted-2);
+  text-decoration:none;
+  transition:color .2s ease;
+}
+.trial:hover{color:#fff}

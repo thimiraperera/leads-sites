@@ -1,0 +1,11 @@
+/* ============================================================
+   BlinQ leads site · utilities.css
+   Helper classes added by JavaScript. Loaded after the section
+   styles on purpose so the reveal transition takes precedence.
+   ============================================================ */
+
+/* ============================================================
+   SCROLL REVEAL (js/main.js adds .reveal, then .in)
+   ============================================================ */
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
+.reveal.in{opacity:1;transform:none}

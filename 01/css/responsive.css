@@ -1,0 +1,104 @@
+/* ============================================================
+   BlinQ leads site · responsive.css
+   Breakpoints (1080 / 900 / 720 / 640 / 560) and reduced-motion overrides.
+   Loaded last so it can override every other stylesheet.
+   ============================================================ */
+
+@media (max-width:1080px){
+  .flow{--per:3}
+  .onboarding{grid-template-columns:1fr;gap:40px}
+}
+
+@media (max-width:900px){
+  .booking{grid-template-columns:1fr;gap:40px}
+  .mockup{
+    inset:0 0 -8% 4%;
+    grid-template-columns:1fr;
+    transform:rotateY(-7deg) rotateX(3deg);
+  }
+  .mockup aside{display:none}
+  .screen{aspect-ratio:16/11}
+}
+
+@media (max-width:720px){
+  .flow{--per:2;--gap:12px}
+}
+
+@media (max-width:640px){
+  header{padding:14px 20px}
+  .logo img{height:34px}
+  .navcta{padding:9px 14px;font-size:13px}
+
+  .hero h1{font-size:clamp(32px,9vw,44px)}
+  .hero .intro{font-size:15px}
+  .previewtop{padding:11px 16px;font-size:9.5px}
+  .previewtop span:last-child{display:none}
+  .videofoot{padding:12px 16px;font-size:11.5px;flex-direction:column;align-items:flex-start;gap:4px}
+  .play{width:68px;height:68px}
+  .play svg{width:22px;height:22px}
+  .videoClose{top:52px;right:14px;font-size:11px;padding:7px 12px}
+  .screen{aspect-ratio:16/12}
+  .mockup{inset:0 0 -6% 2%;transform:rotateY(-5deg) rotateX(2deg)}
+
+  .hero .button{padding:16px 26px;font-size:14.5px}
+
+  .formcard{padding:22px 20px 22px}
+  .formGrid{grid-template-columns:1fr}
+  .formTitle{font-size:19px}
+  .formTopRow{font-size:9.5px}
+
+  .integration{padding:22px 16px}
+  .integration-logos{gap:8px}
+  .integration-logos li{height:42px;padding:0 14px}
+  .integration-logos img{height:20px}
+
+  .testimonialCard{padding:40px 22px}
+  .testimonialCard blockquote{font-size:19px}
+
+  .onboardingIntro h2{font-size:clamp(34px,10vw,48px)}
+  .ready{grid-template-columns:1fr;gap:8px}
+
+  .industry div{gap:12px;font-size:17px}
+
+  .footerTop{flex-direction:column;align-items:flex-start;gap:20px}
+  .footerRight{gap:20px}
+
+  footer{padding-bottom:110px}
+
+  .mobilecta{
+    display:inline-flex;
+    position:fixed;
+    left:16px;
+    right:16px;
+    bottom:16px;
+    z-index:60;
+    justify-content:center;
+    background:var(--red);
+    opacity:0;
+    pointer-events:none;
+    transform:translateY(24px);
+    transition:opacity .35s ease,transform .35s var(--ease);
+    box-shadow:0 18px 40px -14px rgba(240,52,31,.6);
+  }
+  .mobilecta.show{opacity:1;pointer-events:auto;transform:none}
+}
+
+@media (max-width:560px){
+  /* Steps carousel: a peek of the next card, and arrows and dots that fit the smallest screens */
+  .flow{--per:1.25}
+  .flow__ctrl{gap:8px}
+  .flow__dot{padding:0 1.5px}
+  .flow__dot i{width:6px;height:6px}
+  .flow__dot.is-active i{width:20px}
+}
+
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{
+    animation-duration:.001ms !important;
+    animation-iteration-count:1 !important;
+    transition-duration:.001ms !important;
+  }
+  .reveal{opacity:1;transform:none}
+  .flow.is-ready .flow__track{transition:none}
+}

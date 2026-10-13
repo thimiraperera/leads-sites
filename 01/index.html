@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>BlinQ Software — Quote on site. Keep every job moving.</title>
+  <meta name="description" content="Software for blinds, curtains, shutters and awnings businesses. See how BlinQ connects enquiries, quotes, jobs and invoicing.">
+  <meta name="theme-color" content="#0A0A0A">
+
+  <!-- Social sharing -->
+  <meta property="og:title" content="BlinQ Software — Quote on site. Keep every job moving.">
+  <meta property="og:description" content="Software for blinds, curtains, shutters and awnings businesses. See how BlinQ connects enquiries, quotes, jobs and invoicing.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="assets/img/og-cover.webp">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="icon" href="assets/img/favicon.webp" type="image/webp">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+
+  <!-- Styles (order matters: each file builds on the ones before it) -->
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/sections.css">
+  <link rel="stylesheet" href="css/utilities.css">
+  <link rel="stylesheet" href="css/responsive.css">
+
+  <!-- Scripts (deferred: run in order once the page is parsed) -->
+  <script src="js/carousel.js" defer></script>
+  <script src="js/form.js" defer></script>
+  <script src="js/video.js" defer></script>
+  <script src="js/main.js" defer></script>
+</head>
+<body>
+
+  <!-- Icon sprite for the steps carousel (stroke icons, coloured by CSS via currentColor) -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+    <symbol id="i-inbox" viewBox="0 0 24 24"><path d="M22 12h-6l-2 3h-4l-2-3H2"/><path d="M5.45 5.11 2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.45-6.89A2 2 0 0 0 16.76 4H7.24a2 2 0 0 0-1.79 1.11Z"/></symbol>
+    <symbol id="i-phone" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92Z"/></symbol>
+    <symbol id="i-cal-check" viewBox="0 0 24 24"><path d="M8 2v4"/><path d="M16 2v4"/><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M3 10h18"/><path d="m9 16 2 2 4-4"/></symbol>
+    <symbol id="i-ruler" viewBox="0 0 24 24"><path d="M21.3 15.3a2.4 2.4 0 0 1 0 3.4l-2.6 2.6a2.4 2.4 0 0 1-3.4 0L2.7 8.7a2.41 2.41 0 0 1 0-3.4l2.6-2.6a2.41 2.41 0 0 1 3.4 0Z"/><path d="m14.5 12.5 2-2"/><path d="m11.5 9.5 2-2"/><path d="m8.5 6.5 2-2"/><path d="m17.5 15.5 2-2"/></symbol>
+    <symbol id="i-file-plus" viewBox="0 0 24 24"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M9 15h6"/><path d="M12 18v-6"/></symbol>
+    <symbol id="i-send" viewBox="0 0 24 24"><path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/></symbol>
+    <symbol id="i-bell" viewBox="0 0 24 24"><path d="M10.27 21a2 2 0 0 0 3.46 0"/><path d="M22 8c0-2.3-.8-4.3-2-6"/><path d="M3.26 15.33A1 1 0 0 0 4 17h16a1 1 0 0 0 .74-1.67C19.41 13.96 18 12.5 18 8A6 6 0 0 0 6 8c0 4.5-1.41 5.96-2.74 7.33"/><path d="M4 2C2.8 3.7 2 5.7 2 8"/></symbol>
+    <symbol id="i-thumb" viewBox="0 0 24 24"><path d="M7 10v12"/><path d="M15 5.88 14 10h5.83a2 2 0 0 1 1.92 2.56l-2.33 8A2 2 0 0 1 17.5 22H4a2 2 0 0 1-2-2v-8a2 2 0 0 1 2-2h2.76a2 2 0 0 0 1.79-1.11L12 2a3.13 3.13 0 0 1 3 3.88Z"/></symbol>
+    <symbol id="i-wallet" viewBox="0 0 24 24"><path d="M19 7V4a1 1 0 0 0-1-1H5a2 2 0 0 0 0 4h15a1 1 0 0 1 1 1v4h-3a2 2 0 0 0 0 4h3a1 1 0 0 0 1-1v-2a1 1 0 0 0-1-1"/><path d="M3 5v14a2 2 0 0 0 2 2h15a1 1 0 0 0 1-1v-4"/></symbol>
+    <symbol id="i-briefcase" viewBox="0 0 24 24"><path d="M16 20V4a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/><rect width="20" height="14" x="2" y="6" rx="2"/></symbol>
+    <symbol id="i-clip-check" viewBox="0 0 24 24"><rect width="8" height="4" x="8" y="2" rx="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><path d="m9 14 2 2 4-4"/></symbol>
+    <symbol id="i-cart" viewBox="0 0 24 24"><circle cx="8" cy="21" r="1"/><circle cx="19" cy="21" r="1"/><path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"/></symbol>
+    <symbol id="i-factory" viewBox="0 0 24 24"><path d="M2 20a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8l-7 5V8l-7 5V4a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2Z"/><path d="M17 18h1"/><path d="M12 18h1"/><path d="M7 18h1"/></symbol>
+    <symbol id="i-package" viewBox="0 0 24 24"><path d="m16 16 2 2 4-4"/><path d="M21 10V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l2-1.14"/><path d="m7.5 4.27 9 5.15"/><path d="M3.29 7 12 12l8.71-5"/><path d="M12 22V12"/></symbol>
+    <symbol id="i-cal-clock" viewBox="0 0 24 24"><path d="M21 7.5V6a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h3.5"/><path d="M16 2v4"/><path d="M8 2v4"/><path d="M3 10h5"/><path d="M17.5 17.5 16 16.3V14"/><circle cx="16" cy="16" r="6"/></symbol>
+    <symbol id="i-wrench" viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76Z"/></symbol>
+    <symbol id="i-receipt" viewBox="0 0 24 24"><path d="M4 2v20l2-1 2 1 2-1 2 1 2-1 2 1 2-1 2 1V2l-2 1-2-1-2 1-2-1-2 1-2-1-2 1Z"/><path d="M16 8h-6a2 2 0 1 0 0 4h4a2 2 0 1 1 0 4H8"/><path d="M12 17.5v-11"/></symbol>
+    <symbol id="i-badge" viewBox="0 0 24 24"><path d="M3.85 8.62a4 4 0 0 1 4.78-4.77 4 4 0 0 1 6.74 0 4 4 0 0 1 4.78 4.78 4 4 0 0 1 0 6.74 4 4 0 0 1-4.77 4.78 4 4 0 0 1-6.75 0 4 4 0 0 1-4.78-4.77 4 4 0 0 1 0-6.76Z"/><path d="m9 12 2 2 4-4"/></symbol>
+  </svg>
+
+  <!-- ================= HEADER ================= -->
+  <header>
+    <a href="#" aria-label="BlinQ home" class="logo">
+      <img src="assets/img/blinq-logo-white.webp" alt="BlinQ" width="437" height="192">
+    </a>
+    <a href="#book" class="navcta">See it in action</a>
+  </header>
+
+  <main>
+
+    <!-- ================= HERO ================= -->
+    <section class="hero">
+      <div class="eyebrow">Built for window furnishing businesses</div>
+
+      <h1>
+        Quote on site.
+        <span>Keep every job moving.</span>
+      </h1>
+
+      <p class="intro">
+        From the first enquiry to the final installation.<br>
+        Bring your customers, quotes, jobs and invoices together with BlinQ.
+      </p>
+
+      <div class="video">
+        <div class="videoCover" id="videoCover" data-video-id="C2-DxQh26Xo">
+          <div class="previewtop">
+            <span>BLINQ / YOUR WORKFLOW, CONNECTED</span>
+            <span class="live">FROM ENQUIRY TO INSTALLATION</span>
+          </div>
+
+          <div class="screen" id="videoScreen">
+            <!-- Illustrative app mockup, hidden while the video plays -->
+            <div class="mockup">
+              <aside>
+                <div class="brandrow"><i></i> BlinQ</div>
+                <b>Workspace</b>
+                <span>Customers</span>
+                <span class="active">Quotes &amp; jobs</span>
+                <span>Appointments</span>
+                <span>Purchase orders</span>
+                <span>Invoices</span>
+              </aside>
+
+              <div class="quote">
+                <div class="quotehead">
+                  <div>
+                    <small>ON-SITE QUOTING</small>
+                    <h3>A better way to quote.</h3>
+                  </div>
+                  <span class="approved">Ready to send</span>
+                </div>
+
+                <div class="product">
+                  <img class="icon" src="assets/img/swatch-roller-blind.svg" alt="" width="44" height="44">
+                  <div class="meta">
+                    <b>Living room</b>
+                    <p>Roller blind · Fabric &amp; colour</p>
+                  </div>
+                  <span class="check">✓</span>
+                </div>
+
+                <div class="product">
+                  <img class="icon" src="assets/img/swatch-curtain.svg" alt="" width="44" height="44">
+                  <div class="meta">
+                    <b>Master bedroom</b>
+                    <p>Curtain &amp; track</p>
+                  </div>
+                  <span class="check">✓</span>
+                </div>
+
+                <div class="workflow">
+                  <span>Enquiry</span><i></i>
+                  <span>Quote</span><i></i>
+                  <span>Job</span><i></i>
+                  <span>Invoice</span>
+                </div>
+              </div>
+            </div>
+
+            <iframe id="videoFrame"
+              title="BlinQ Software overview"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowfullscreen></iframe>
+          </div>
+
+          <button class="play" id="playBtn" type="button" aria-label="Watch the BlinQ Software overview">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M8 5.14v14l11-7z"/>
+            </svg>
+          </button>
+
+          <button class="videoClose" id="videoClose" type="button" aria-label="Close video">
+            ✕ Close
+          </button>
+
+          <div class="videofoot">
+            <span id="footTitle">See how BlinQ brings it all together</span>
+            <small id="footSub">Illustrative workflow preview · Play the real overview</small>
+          </div>
+        </div>
+      </div>
+
+      <a class="button" href="#book">
+        See it in action
+        <span>→</span>
+      </a>
+
+      <p class="micro">A personal walkthrough for your business. No card required to enquire.</p>
+    </section>
+
+    <!-- ================= INDUSTRY STRIP ================= -->
+    <section class="industry">
+      <div class="eyebrow muted no-dot">Your products. Your pricing. One connected workflow.</div>
+      <div>
+        <span>Blinds</span><i>•</i>
+        <span>Curtains</span><i>•</i>
+        <span>Shutters</span><i>•</i>
+        <span>Awnings</span>
+      </div>
+    </section>
+
+    <!-- ================= BOOKING ================= -->
+    <section class="booking section" id="book">
+      <div class="bookintro">
+        <div class="eyebrow">Your next step</div>
+        <h2>Less admin.<br><span>More time for business.</span></h2>
+        <p>Tell us a little about your business. We’ll show you how BlinQ can fit the way you quote, sell and manage jobs.</p>
+        <ul>
+          <li>See on-site quoting in action</li>
+          <li>Explore the workflow your team needs</li>
+          <li>Discuss pricing, setup and integrations</li>
+        </ul>
+        <div class="booknote">Free demo enquiry <span>·</span> No obligation</div>
+      </div>
+
+      <form class="formcard" id="demoForm" novalidate>
+        <div class="formTopRow">
+          <span class="step-active">01 / YOUR BUSINESS</span>
+          <span class="step-inactive">02 / YOUR DETAILS</span>
+        </div>
+
+        <h3 class="formTitle">What kind of business do you run?</h3>
+        <p class="formSub">So we can make your demo relevant to you.</p>
+
+        <div class="choices" id="businessChoices">
+          <button type="button" aria-pressed="false" data-business="retailer">
+            <span>Window furnishing retailer</span><span class="marker">↗</span>
+          </button>
+          <button type="button" aria-pressed="false" data-business="manufacturer">
+            <span>Manufacturer</span><span class="marker">↗</span>
+          </button>
+          <button type="button" aria-pressed="false" data-business="wholesaler">
+            <span>Wholesaler / dealer</span><span class="marker">↗</span>
+          </button>
+          <button type="button" aria-pressed="false" data-business="franchise">
+            <span>Franchise</span><span class="marker">↗</span>
+          </button>
+        </div>
+
+        <div class="formDetails" id="formDetails" aria-hidden="true">
+          <div class="detailsLabel">Your details</div>
+
+          <div class="formGrid">
+            <div class="formField">
+              <label for="f-name">Your name</label>
+              <input id="f-name" name="name" type="text" autocomplete="name">
+            </div>
+            <div class="formField">
+              <label for="f-business">Business name</label>
+              <input id="f-business" name="business" type="text" autocomplete="organization">
+            </div>
+          </div>
+
+          <div class="formGrid">
+            <div class="formField">
+              <label for="f-email">Work email</label>
+              <input id="f-email" name="email" type="email" autocomplete="email">
+            </div>
+            <div class="formField">
+              <label for="f-phone">Phone number</label>
+              <input id="f-phone" name="phone" type="tel" autocomplete="tel">
+            </div>
+          </div>
+
+          <div class="formGrid">
+            <div class="formField formFull">
+              <label for="f-country">Country</label>
+              <select id="f-country" name="country" required>
+                <option value="" disabled selected>Select your country</option>
+                <option value="Australia">Australia</option>
+                <option value="United States">United States</option>
+                <option value="United Kingdom">United Kingdom</option>
+                <option value="New Zealand">New Zealand</option>
+                <option value="Africa">Africa</option>
+                <option value="Other">Other</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="formGrid">
+            <div class="formField formFull">
+              <label for="f-priority">What would you most like to improve?</label>
+              <select id="f-priority" name="priority" required>
+                <option value="" disabled selected>Select your main priority</option>
+                <option value="Faster quoting">Faster quoting</option>
+                <option value="Managing enquiries & follow-ups">Managing enquiries &amp; follow-ups</option>
+                <option value="Tracking jobs & installations">Tracking jobs &amp; installations</option>
+                <option value="Invoicing & payments">Invoicing &amp; payments</option>
+                <option value="Connecting my whole workflow">Connecting my whole workflow</option>
+              </select>
+            </div>
+          </div>
+
+          <label class="formCheck">
+            <input type="checkbox" name="consent">
+            <span>
+              I agree that BlinQ may contact me about my enquiry. View the
+              <a href="https://www.blinq.com.au/privacy-policy.html" target="_blank" rel="noopener noreferrer">Privacy Policy</a>.
+            </span>
+          </label>
+
+          <button class="formSubmit" type="submit">
+            Request my demo <span aria-hidden="true">→</span>
+          </button>
+
+          <p class="formNote">Next: choose a demo time that suits you.</p>
+        </div>
+      </form>
+    </section>
+
+    <!-- ================= PAIN LIST ================= -->
+    <section class="gut section">
+      <div class="eyebrow">Sound familiar?</div>
+      <h2>Your business has grown.<br><span>Your systems haven’t caught up.</span></h2>
+      <div class="painlist">
+        <div><span>01</span><p>You measure on site, then spend your evening building the quote.</p></div>
+        <div><span>02</span><p>Enquiries are scattered across emails, notebooks and spreadsheets.</p></div>
+        <div><span>03</span><p>Your team keeps asking where a job is up to.</p></div>
+        <div><span>04</span><p>The same details are entered again for orders and invoices.</p></div>
+      </div>
+      <a class="textlink" href="#book">That sounds like us →</a>
+    </section>
+
+    <!-- ================= CONNECTED — 18-STEP CAROUSEL ================= -->
+    <section class="connected section">
+      <div class="eyebrow">From first contact to final install</div>
+      <h2>Everything moves<br><span>with the job.</span></h2>
+
+      <!-- Steps carousel (from blinq-web-v3.0 "Keep it simple & accurate!"), driven by js/carousel.js -->
+      <div class="flow" data-flow role="region" aria-roledescription="carousel" aria-label="How BlinQ works, step by step">
+        <div class="flow__view">
+          <ol class="flow__track">
+            <li class="step">
+              <span class="step__top"><span class="step__icon"><svg aria-hidden="true"><use href="#i-inbox"/></svg></span><span class="step__n">01</span></span>
+              <h3>Lead Received</h3>
+              <p>New enquiry captured from website, phone, email, referral or walk-in.</p>
+            </li>
+            <li class="step">
+              <span class="step__top"><span class="step__icon"><svg aria-hidden="true"><use href="#i-phone"/></svg></span><span class="step__n">02</span></span>
+              <h3>Lead Contacted</h3>
+              <p>Call, SMS or email the customer and qualify the enquiry.</p>
+            </li>
+            <li class="step">
+              <span class="step__top"><span class="step__icon"><svg aria-hidden="true"><use href="#i-cal-check"/></svg></span><span class="step__n">03</span></span>
+              <h3>Appointment Booked</h3>
+              <p>Book measure/consultation through the centralised calendar.</p>
+            </li>
+            <li class="step">
+              <span class="step__top"><span class="step__icon"><svg aria-hidden="true"><use href="#i-ruler"/></svg></span><span class="step__n">04</span></span>
+              <h3>Measure &amp; Consult</h3>
+              <p>Visit customer, take measurements and select products, fabrics and options.</p>
+            </li>
+            <li class="step">
+              <span class="step__top"><span class="step__icon"><svg aria-hidden="true"><use href="#i-file-plus"/></svg></span><span class="step__n">05</span></span>
+              <h3>Quote Created</h3>
+              <p>Build the quotation using BlinQ pricing and product rules.</p>
+            </li>
+            <li class="step">
+              <span class="step__top"><span class="step__icon"><svg aria-hidden="true"><use href="#i-send"/></svg></span><span class="step__n">06</span></span>
+              <h3>Quote Sent</h3>
+              <p>Email or SMS the quotation directly to the customer.</p>
+            </li>
+            <li class="step">
+              <span class="step__top"><span class="step__icon"><svg aria-hidden="true"><use href="#i-bell"/></svg></span><span class="step__n">07</span></span>
+              <h3>Follow-Up</h3>
+              <p>Automated or manual follow-up until the customer decides.</p>
+            </li>
+            <li class="step">
+              <span class="step__top"><span class="step__icon"><svg aria-hidden="true"><use href="#i-thumb"/></svg></span><span class="step__n">08</span></span>
+              <h3>Quote Accepted</h3>
+              <p>Customer approves the quotation.</p>
+            </li>
+            <li class="step">
+              <span class="step__top"><span class="step__icon"><svg aria-hidden="true"><use href="#i-wallet"/></svg></span><span class="step__n">09</span></span>
+              <h3>Deposit / Payment</h3>
+              <p>Collect the required deposit or payment.</p>
+            </li>
+            <li class="step">
+              <span class="step__top"><span class="step__icon"><svg aria-hidden="true"><use href="#i-briefcase"/></svg></span><span class="step__n">10</span></span>
+              <h3>Convert to Job</h3>
+              <p>Convert the accepted quote into an active job.</p>
+            </li>
+            <li class="step">
+              <span class="step__top"><span class="step__icon"><svg aria-hidden="true"><use href="#i-clip-check"/></svg></span><span class="step__n">11</span></span>
+              <h3>Check Measure</h3>
+              <p>Confirm final measurements where required.</p>
+            </li>
+            <li class="step">
+              <span class="step__top"><span class="step__icon"><svg aria-hidden="true"><use href="#i-cart"/></svg></span><span class="step__n">12</span></span>
+              <h3>Order Products</h3>
+              <p>Generate supplier or manufacturer purchase orders.</p>
+            </li>
+            <li class="step">
+              <span class="step__top"><span class="step__icon"><svg aria-hidden="true"><use href="#i-factory"/></svg></span><span class="step__n">13</span></span>
+              <h3>Production</h3>
+              <p>Products are manufactured or prepared.</p>
+            </li>
+            <li class="step">
+              <span class="step__top"><span class="step__icon"><svg aria-hidden="true"><use href="#i-package"/></svg></span><span class="step__n">14</span></span>
+              <h3>Products Received</h3>
+              <p>Goods arrive and are checked.</p>
+            </li>
+            <li class="step">
+              <span class="step__top"><span class="step__icon"><svg aria-hidden="true"><use href="#i-cal-clock"/></svg></span><span class="step__n">15</span></span>
+              <h3>Installation Booked</h3>
+              <p>Assign installer and schedule installation.</p>
+            </li>
+            <li class="step">
+              <span class="step__top"><span class="step__icon"><svg aria-hidden="true"><use href="#i-wrench"/></svg></span><span class="step__n">16</span></span>
+              <h3>Installation</h3>
+              <p>Installer completes installation or site work.</p>
+            </li>
+            <li class="step">
+              <span class="step__top"><span class="step__icon"><svg aria-hidden="true"><use href="#i-receipt"/></svg></span><span class="step__n">17</span></span>
+              <h3>Final Payment</h3>
+              <p>Collect the remaining balance.</p>
+            </li>
+            <li class="step">
+              <span class="step__top"><span class="step__icon"><svg aria-hidden="true"><use href="#i-badge"/></svg></span><span class="step__n">18</span></span>
+              <h3>Job Complete</h3>
+              <p>Confirm installation, paperwork and payment are complete.</p>
+            </li>
+          </ol>
+        </div>
+        <div class="flow__ctrl">
+          <button class="flow__arrow flow__arrow--prev" type="button" aria-label="Previous step" data-flow-prev><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></button>
+          <div class="flow__dots" data-flow-dots><!-- dots added by js/carousel.js --></div>
+          <button class="flow__arrow" type="button" aria-label="Next step" data-flow-next><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></button>
+        </div>
+      </div>
+
+      <div class="integration">
+        <p>Connect your workflow with</p>
+        <ul class="integration-logos">
+          <li><img src="assets/img/app-google-calendar.webp" alt="Google Calendar" width="151" height="56" loading="lazy"></li>
+          <li><img src="assets/img/app-xero.webp" alt="Xero" width="192" height="56" loading="lazy"></li>
+          <li><img src="assets/img/app-quickbooks.webp" alt="QuickBooks" width="240" height="53" loading="lazy"></li>
+          <li><img src="assets/img/app-myob.webp" alt="MYOB" width="134" height="56" loading="lazy"></li>
+        </ul>
+        <small>Integration availability and setup depend on your account and requirements.</small>
+      </div>
+    </section>
+
+    <!-- ================= TESTIMONIAL ================= -->
+    <section class="testimonial section">
+      <div class="testimonialCard">
+        <div class="eyebrow no-dot">From a window furnishing business</div>
+        <blockquote>“It helped us to do contactless appointments, streamlined most of the manual process.”</blockquote>
+        <div class="person">
+          <span class="avatar">AK</span>
+          <div>
+            <b>Anthony Katavich</b>
+            <p>Owner, Mr Blinds · New Zealand</p>
+          </div>
+        </div>
+        <br>
+        <a class="textlink" href="https://www.blinq.com.au/" target="_blank" rel="noopener noreferrer">Read customer feedback ↗</a>
+      </div>
+    </section>
+
+    <!-- ================= ONBOARDING ================= -->
+    <section class="onboarding section" id="how-to-get-started">
+      <div class="onboardingIntro">
+        <h2>
+          A<br>
+          considered<br>
+          start,<br>
+          <em>from day<br>one.</em>
+        </h2>
+        <p>From signing up for your preferred plan to taking the controls, we keep the setup journey clear, considered and focused on the details that make your products sell online.</p>
+      </div>
+
+      <div class="onboardingSteps">
+        <article class="onboardingStep">
+          <span class="onboardingNumber">01</span>
+          <div>
+            <h3>Sign up for your preferred plan</h3>
+            <p>Visit our website, choose your preferred BlinQ plan and sign up to begin your setup journey.</p>
+            <a class="textlink onboardingPricing" href="https://www.blinq.com.au/pricing/?slug=pricing" target="_blank" rel="noopener noreferrer">View plans &amp; sign up ↗</a>
+          </div>
+          <span class="onboardingArrow" aria-hidden="true">→</span>
+        </article>
+
+        <article class="onboardingStep">
+          <span class="onboardingNumber">02</span>
+          <div>
+            <h3>Share the essentials</h3>
+            <p>Our administration team will email a straightforward request for your product ranges, fabric details and pricing information.</p>
+          </div>
+          <span class="onboardingArrow" aria-hidden="true">→</span>
+        </article>
+
+        <article class="onboardingStep">
+          <span class="onboardingNumber">03</span>
+          <div>
+            <h3>We configure the details</h3>
+            <p>Our data team translates your prices and product rules into a made-to-measure online ordering experience.</p>
+          </div>
+          <span class="onboardingArrow" aria-hidden="true">→</span>
+        </article>
+
+        <article class="onboardingStep last">
+          <span class="onboardingNumber">04</span>
+          <div>
+            <h3>Take the controls</h3>
+            <p>Once everything is ready, we show you how to update your prices, products and options with confidence.</p>
+          </div>
+          <span class="onboardingArrow" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"/>
+              <path d="M8 12l3 3 5-6"/>
+            </svg>
+          </span>
+        </article>
+
+        <div class="ready">
+          <b>READY TO MANAGE</b>
+          <p>Your account is set up around your products — with your team ready to keep it current.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= FAQ ================= -->
+    <section class="faq section">
+      <div class="eyebrow no-dot">FAQ</div>
+      <h2>Fair questions.<br><span>Clear answers.</span></h2>
+
+      <details>
+        <summary>Is BlinQ built for window furnishing businesses?<span class="plus">+</span></summary>
+        <p>Yes. BlinQ supports businesses working with blinds, curtains, shutters and awnings, with workflows for retailers, manufacturers, wholesalers and franchises.</p>
+      </details>
+
+      <details>
+        <summary>Can we quote at the customer’s property?<span class="plus">+</span></summary>
+        <p>Yes. Create quotations on site using your configured product pricing and options, then email the quotation to your customer.</p>
+      </details>
+
+      <details>
+        <summary>Can we use our own products and pricing?<span class="plus">+</span></summary>
+        <p>Yes. Product and pricing setup is discussed during onboarding so your quotation workflow reflects your business requirements.</p>
+      </details>
+
+      <details>
+        <summary>Can BlinQ connect with our accounting software?<span class="plus">+</span></summary>
+        <p>BlinQ offers integrations with Xero, QuickBooks and MYOB. We’ll confirm the available integration and any setup requirements during your demo.</p>
+      </details>
+
+      <details>
+        <summary>What happens after I submit the form?<span class="plus">+</span></summary>
+        <p>Your enquiry is saved, and you can choose a time using the BlinQ booking calendar. Submitting the form alone does not book a meeting.</p>
+      </details>
+
+      <details>
+        <summary>How much does it cost?<span class="plus">+</span></summary>
+        <p>Pricing depends on your plan, users, modules and setup requirements. We’ll discuss the suitable options for your business. You can also view the current pricing on the BlinQ website.</p>
+      </details>
+
+      <details>
+        <summary>Is there a free trial?<span class="plus">+</span></summary>
+        <p>BlinQ offers a seven-day free trial. A payment card is required for the trial, with billing after the trial under the applicable terms. No payment card is needed to request a demo.</p>
+      </details>
+    </section>
+
+    <!-- ================= FINAL CTA ================= -->
+    <section class="final section">
+      <div class="eyebrow">Your next chapter</div>
+      <h2>Spend less time chasing details.<br><span>See what connected looks like.</span></h2>
+      <p>Let’s explore a smoother workflow for your window furnishing business.</p>
+      <a class="button" href="#book">
+        See it in action
+        <span>→</span>
+      </a>
+      <a class="trial" href="https://www.blinq.com.au/pricing/?slug=pricing" target="_blank" rel="noopener noreferrer">Explore plans &amp; the 7-day trial ↗</a>
+    </section>
+
+  </main>
+
+  <!-- ================= FOOTER ================= -->
+  <footer>
+    <div class="footerTop">
+      <div class="footerLeft">
+        <div class="footerLogoBox">
+          <img src="assets/img/blinq-logo.webp" alt="BlinQ" width="437" height="192" loading="lazy">
+        </div>
+        <p>Software for the window furnishing industry.</p>
+      </div>
+      <div class="footerRight">
+        <a href="mailto:support@blinq.com.au">support@blinq.com.au</a>
+        <a href="https://www.blinq.com.au/privacy-policy.html">Privacy</a>
+        <a href="https://www.blinq.com.au/pricing/?slug=pricing">Pricing</a>
+      </div>
+    </div>
+    <small class="copyright">© 2026 BlinQ Software</small>
+  </footer>
+
+  <!-- ================= MOBILE STICKY CTA ================= -->
+  <a class="mobilecta button" href="#book">See it in action →</a>
+
+</body>
+</html>

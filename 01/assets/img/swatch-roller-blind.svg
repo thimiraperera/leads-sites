@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="44" height="44" viewBox="0 0 44 44">
+  <defs>
+    <pattern id="weave" width="4" height="44" patternUnits="userSpaceOnUse">
+      <rect width="2" height="44" fill="#E8DFD2"/>
+      <rect x="2" width="2" height="44" fill="#F5EFE6"/>
+    </pattern>
+  </defs>
+  <rect width="44" height="44" fill="url(#weave)"/>
+</svg>

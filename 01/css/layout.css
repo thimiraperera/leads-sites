@@ -15,7 +15,9 @@ header{
   display:flex;
   align-items:center;
   justify-content:space-between;
-  padding:18px clamp(24px,5vw,72px);
+  max-width:var(--max-w);
+  margin:0 auto;
+  padding:18px var(--gutter);
   background:rgba(10,10,10,.75);
   -webkit-backdrop-filter:blur(14px);
   backdrop-filter:blur(14px);
@@ -50,9 +52,9 @@ header.scrolled{
    SECTION CONTAINER
    ============================================================ */
 .section{
-  max-width:1240px;
+  max-width:var(--max-w);
   margin:0 auto;
-  padding:clamp(64px,8vw,110px) clamp(24px,5vw,64px);
+  padding:clamp(64px,8vw,110px) var(--gutter);
   border-bottom:1px solid var(--line);
 }
 section.section:last-of-type{border-bottom:none}
@@ -61,7 +63,9 @@ section.section:last-of-type{border-bottom:none}
    FOOTER
    ============================================================ */
 footer{
-  padding:44px clamp(24px,5vw,64px) 40px;
+  max-width:var(--max-w);
+  margin:0 auto;
+  padding:44px var(--gutter) 40px;
   background:var(--bg);
   border-top:1px solid var(--line);
 }

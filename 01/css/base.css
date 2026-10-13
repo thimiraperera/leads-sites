@@ -32,6 +32,11 @@
   --sans:'Inter',system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;
   --serif:'Instrument Serif',Georgia,'Times New Roman',serif;
   --ease:cubic-bezier(.16,1,.3,1);
+
+  /* Layout: the whole site (header, sections, strip, footer) is one centred column, at most
+     1440px wide, with --gutter inside it on both sides. */
+  --max-w:1440px;
+  --gutter:clamp(24px,5vw,64px);
 }
 
 /* ============================================================

@@ -2,7 +2,7 @@
    BlinQ leads site · sections.css
    One block per page section, in page order:
    hero, video preview, industry strip, booking, pain list,
-   connected workflow, testimonials, onboarding, FAQ, final CTA.
+   how it works, testimonials, onboarding, FAQ, final CTA.
    ============================================================ */
 
 /* ============================================================
@@ -479,12 +479,149 @@
 .gut .textlink{border:none;padding:0}
 
 /* ============================================================
-   CONNECTED WORKFLOW (carousel lives in components.css)
+   HOW IT WORKS (5 stages, 18 steps; dark theme)
+   Stage tabs over one panel: the stage's story and checklist on the
+   left, its steps in a workflow card on the right. js/stages.js.
    ============================================================ */
-.connected{text-align:center}
-.connected h2{margin-top:20px}
+.how h2{margin-top:20px;max-width:900px}
+.how__intro{
+  margin:24px 0 0;
+  max-width:720px;
+  font-size:16px;
+  line-height:1.7;
+  color:var(--muted);
+}
 
-/* Integration box below the carousel */
+/* Stage tabs */
+.stages{margin-top:40px}
+.stages__tabs{display:none;gap:10px;overflow-x:auto;scrollbar-width:none;padding:2px 0;margin-bottom:20px}
+.stages.is-ready .stages__tabs{display:flex}
+.stages__tabs::-webkit-scrollbar{display:none}
+.stages__tab{
+  flex:none;
+  padding:12px 20px;
+  border:1px solid var(--line-2);
+  border-radius:999px;
+  background:transparent;
+  font-size:14px;
+  font-weight:600;
+  color:var(--text-2);
+  white-space:nowrap;
+  cursor:pointer;
+  transition:background .15s ease,border-color .15s ease,color .15s ease;
+}
+.stages__tab b{font-weight:600;font-variant-numeric:tabular-nums;color:var(--muted-2);margin-right:4px;transition:color .15s ease}
+.stages__tab:hover{border-color:var(--line-3);color:#fff}
+.stages__tab.is-active{background:var(--red);border-color:var(--red);color:#fff}
+.stages__tab.is-active b{color:rgba(255,255,255,.75)}
+.stages__tab:focus-visible{outline:2px solid var(--red);outline-offset:2px}
+
+/* Panels: stacked in one grid cell once JS runs, so switching never changes the height */
+.stage + .stage{margin-top:20px}
+.stages.is-ready .stages__panels{display:grid}
+.stages.is-ready .stage{
+  grid-area:1 / 1;
+  margin:0;
+  opacity:0;
+  visibility:hidden;
+  transform:translateY(8px);
+  transition:opacity .45s var(--ease),transform .45s var(--ease),visibility 0s .45s;
+}
+.stages.is-ready .stage.is-active{opacity:1;visibility:visible;transform:none;transition-delay:0s,0s,0s}
+.stage{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:clamp(28px,4vw,48px);
+  align-items:start;
+  padding:clamp(22px,4vw,46px);
+  background:var(--card);
+  border:1px solid var(--line);
+  border-radius:20px;
+}
+
+/* Left: the stage's story */
+.stage__tag{margin:0;font-size:13px;font-weight:600;color:var(--red)}
+.stage h3{
+  margin-top:14px;
+  font-size:clamp(26px,3vw,38px);
+  line-height:1.12;
+  letter-spacing:-.03em;
+  color:#fff;
+}
+.stage__desc{margin:16px 0 0;max-width:52ch;font-size:15px;line-height:1.7;color:var(--muted)}
+.stage__benefits{list-style:none;margin:26px 0 0;padding:0;display:grid;gap:13px}
+.stage__benefits li{display:flex;align-items:center;gap:12px;font-size:15px;font-weight:600;color:var(--text-2)}
+.stage__benefits li::before{
+  content:"✓";
+  flex:none;
+  display:grid;
+  place-items:center;
+  width:26px;
+  height:26px;
+  border-radius:50%;
+  background:rgba(240,52,31,.14);
+  font-size:13px;
+  font-weight:700;
+  color:var(--red-2);
+}
+.stage__actions{display:flex;flex-wrap:wrap;align-items:center;gap:16px 28px;margin-top:30px}
+.stage__link{
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  font-size:15px;
+  font-weight:600;
+  color:#fff;
+  text-decoration:none;
+  transition:color .15s ease;
+}
+.stage__link span{transition:transform .25s var(--ease)}
+.stage__link:hover{color:var(--red-2)}
+.stage__link:hover span{transform:translateX(3px)}
+
+/* Right: the stage's steps in a workflow card */
+.stage__mock{
+  position:relative;
+  padding:24px;
+  border:1px solid var(--line-2);
+  border-radius:16px;
+  background:
+    radial-gradient(120% 80% at 100% 0%, rgba(240,52,31,.10), rgba(240,52,31,0) 55%),
+    #141518;
+  overflow:hidden;
+}
+.stage__mockLabel{margin:0;font-size:12px;font-weight:500;color:var(--muted-2)}
+.stage__mockTitle{margin:12px 0 16px;font-size:22px;font-weight:700;letter-spacing:-.02em;color:#fff}
+.stage__steps{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+.stage__steps li{
+  display:flex;
+  align-items:center;
+  gap:14px;
+  padding:14px 16px;
+  border:1px solid #2C2E33;
+  border-radius:12px;
+  background:#1D1F23;
+}
+.stage__num{
+  flex:none;
+  display:grid;
+  place-items:center;
+  width:38px;
+  height:38px;
+  border-radius:9px;
+  background:var(--red);
+  font-size:14px;
+  font-weight:700;
+  color:#fff;
+  font-variant-numeric:tabular-nums;
+}
+.stage__step b{display:block;font-size:15px;font-weight:600;color:#fff}
+.stage__step small{display:block;margin-top:4px;font-size:12.5px;color:#9A9CA1}
+.stage__count{margin:14px 0 0;font-size:12.5px;color:var(--muted-2);font-variant-numeric:tabular-nums}
+
+.stages__foot{margin:22px 0 0;font-size:14px;color:var(--muted-2)}
+
+/* Integration box below the stages */
 .integration{
   margin:56px 0 0;
   padding:26px 28px;
@@ -635,6 +772,7 @@
 .testi__bar{position:absolute;left:0;right:0;top:-1px;height:2px;background:var(--red);transform:scaleX(0);transform-origin:left}
 .testi__tab.is-active .testi__bar{animation:fill 7s linear forwards}
 .testi:hover .testi__bar,.testi:focus-within .testi__bar{animation-play-state:paused}
+@keyframes fill{from{transform:scaleX(0)}to{transform:scaleX(1)}}
 .testi__arrows{display:flex;gap:8px;align-items:center;padding:12px 0}
 .testi__arrow{
   width:36px;

@@ -1,7 +1,6 @@
 /* ============================================================
    BlinQ leads site · components.css
-   Reusable pieces: buttons, text links, the demo form
-   and the steps carousel.
+   Reusable pieces: buttons, text links and the demo form.
    ============================================================ */
 
 /* ============================================================
@@ -31,6 +30,8 @@
 }
 .button span{font-size:17px;line-height:1;transition:transform .25s var(--ease)}
 .button:hover span{transform:translateX(4px)}
+/* Smaller button for use inside cards */
+.button--sm{gap:10px;padding:15px 24px;font-size:14.5px}
 
 /* ============================================================
    TEXT LINK
@@ -242,85 +243,3 @@
   color:#9A9A9A;
   margin:14px 0 0;
 }
-
-/* ============================================================
-   STEPS CAROUSEL (from blinq-web-v3.0 "Keep it simple & accurate!", dark theme)
-   One row of step cards. It moves on by itself every 5 seconds,
-   follows a drag and stops at the last card. Without JS the row
-   is a plain horizontal scroller. Only transform moves.
-   ============================================================ */
-.flow{--per:4;--gap:16px;margin-top:52px;text-align:left}
-.flow__view{overflow-x:auto;scrollbar-width:none;padding-block:2px;margin-block:-2px}
-.flow__view::-webkit-scrollbar{display:none}
-.flow__track{position:relative;display:flex;gap:var(--gap);margin:0;padding:0;list-style:none}
-.flow.is-ready .flow__view{overflow:hidden;cursor:grab;touch-action:pan-y;-webkit-user-select:none;user-select:none}
-.flow.is-ready .flow__track{transition:transform 900ms var(--ease);will-change:transform}
-.flow.is-dragging .flow__view{cursor:grabbing}
-.flow.is-dragging{-webkit-user-select:none;user-select:none}
-.flow.is-dragging .flow__track,.flow .flow__track.is-jump{transition:none}
-
-/* Step card */
-.step{
-  flex:0 0 calc((100% - (var(--per) - 1) * var(--gap)) / var(--per));
-  min-width:0;
-  padding:22px 22px 26px;
-  border:1px solid var(--line);
-  border-radius:14px;
-  background:var(--card);
-  transition:border-color .15s ease;
-}
-.step:hover{border-color:var(--line-2)}
-.step__top{display:flex;align-items:center;justify-content:space-between;gap:12px}
-.step__icon{
-  width:38px;
-  height:38px;
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-  border:1px solid var(--line-2);
-  border-radius:10px;
-  background:var(--card-2);
-  color:var(--text-2);
-}
-.step__icon svg{width:18px;height:18px;display:block;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
-.step__n{font-size:15px;font-weight:600;color:var(--red);font-variant-numeric:tabular-nums}
-.step h3{margin:18px 0 0;font-size:18px;font-weight:600;line-height:1.2;letter-spacing:-.015em;color:#fff}
-.step p{margin:8px 0 0;font-size:15px;line-height:22px;color:var(--muted)}
-
-/* Controls: arrows either side of the progress dots */
-.flow__ctrl{display:none;margin-top:28px;align-items:center;justify-content:center;gap:14px}
-.flow.is-ready .flow__ctrl{display:flex}
-.flow__arrow{
-  width:36px;
-  height:36px;
-  flex:none;
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-  padding:0;
-  border:1px solid var(--line-2);
-  border-radius:50%;
-  background:transparent;
-  color:#fff;
-  cursor:pointer;
-  transition:border-color .15s ease,color .15s ease,background .15s ease;
-}
-.flow__arrow:hover{border-color:var(--red);color:var(--red-2);background:rgba(240,52,31,.08)}
-.flow__arrow svg{width:16px;height:16px;display:block;fill:none;stroke:currentColor;stroke-width:1.75;stroke-linecap:round;stroke-linejoin:round}
-.flow__arrow--prev svg{transform:rotate(180deg)}
-.flow__arrow:disabled{opacity:.35;cursor:default;pointer-events:none}
-
-/* The red fill in the active dot is the 5 second timer (js/carousel.js listens for its end). */
-.flow__dots{display:flex;align-items:center}
-.flow__dot{display:inline-flex;align-items:center;justify-content:center;height:24px;padding:0 3px;border:0;background:none;cursor:pointer}
-.flow__dot i{position:relative;display:block;width:8px;height:8px;border-radius:9999px;background:var(--line-2);overflow:hidden;transition:background-color .15s ease}
-.flow__dot:hover i{background:var(--muted-2)}
-.flow__dot.is-active i{width:28px;background:var(--line-3)}
-.flow__dot.is-active i::after{content:"";position:absolute;inset:0;border-radius:inherit;background:var(--red);transform:scaleX(0);transform-origin:left;animation:fill 5s linear forwards}
-.flow.is-paused .flow__dot.is-active i::after{animation-play-state:paused}
-/* At the last card the timer stops, full, and the next arrow switches off. */
-.flow.is-end .flow__dot.is-active i::after{animation:none;transform:scaleX(1)}
-.flow.is-still .flow__dot.is-active i::after{animation:none;transform:scaleX(1)}
-.flow__arrow:focus-visible,.flow__dot:focus-visible{outline:2px solid var(--red);outline-offset:2px}
-@media (pointer:coarse){ .flow__dot{pointer-events:none} }
-@keyframes fill{from{transform:scaleX(0)}to{transform:scaleX(1)}}

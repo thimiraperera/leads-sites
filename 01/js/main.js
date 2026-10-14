@@ -35,7 +35,7 @@
   if (!prefersReduced && 'IntersectionObserver' in window) {
     var selector = [
       '.hero > *','.industry > *','.booking > *','.gut > *',
-      '.connected > *','.testimonial > *','.onboarding > *',
+      '.how > *','.testimonial > *','.onboarding > *',
       '.faq > *','.final > *'
     ].join(',');
     var observer = new IntersectionObserver(function (entries) {

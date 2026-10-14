@@ -12,8 +12,8 @@ css/components.css         Buttons, text link, demo form, steps carousel
 css/layout.css             Header, section container, footer, mobile sticky CTA
 css/sections.css           One block per page section, in page order
 css/utilities.css          Scroll-reveal classes added by JavaScript
-css/responsive.css         Breakpoints (1080 / 900 / 720 / 640 / 560) and reduced motion
-js/carousel.js             18-step carousel: timer dots, arrows, drag, stops at the last card
+css/responsive.css         Breakpoints (1080 / 900 / 720 / 640) and reduced motion
+js/stages.js               How BlinQ works: stage tabs (click, arrow keys, Home / End)
 js/testimonials.js         Customer stories: tabs, arrows, 7-second auto-rotation
 js/faq.js                  FAQ: topic switching, Expand all / Collapse all
 js/form.js                 Business-type choice, step 2 reveal, submit placeholder
@@ -32,10 +32,10 @@ files for 10 minutes; a new `?v=` makes visitors fetch the updated files straigh
 
 ## Editing
 
-- **Carousel steps**: the steps carousel is the "Keep it simple & accurate!" carousel from
-  blinq-web-v3.0, restyled for the dark theme. Edit the `<li class="step">` cards in `index.html`;
-  dots are generated to match. Each card's icon is a `<use href="#i-...">` pointing at the icon sprite
-  at the top of `<body>`. Cards per view: 4 on desktop, 3 from 1080px, 2 from 720px, 1¼ from 560px.
+- **How BlinQ works**: 18 steps in 5 stages. Each stage is a `<button class="stages__tab">` plus a
+  `<div class="stage" id="stage-N">` panel (story, checklist, buttons, and a workflow card listing its
+  steps); keep `stage-tab-N` / `stage-N` in step and update "Stage N of 5" and "Steps 01–03 of 18" if
+  stages change. All panels share one grid cell, so the section keeps the height of the tallest stage.
 - **Customer stories**: the testimonial carousel from blinq-web-v3.0, restyled for the dark theme.
   Each story is a `<figure class="testi__slide">` with a matching `<button class="testi__tab">`; keep
   the ids in step (`testi-N` / `testi-tab-N`) when adding or removing one. Only quotes published on

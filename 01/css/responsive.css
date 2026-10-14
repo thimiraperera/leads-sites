@@ -1,11 +1,10 @@
 /* ============================================================
    BlinQ leads site · responsive.css
-   Breakpoints (1080 / 900 / 720 / 640 / 560) and reduced-motion overrides.
+   Breakpoints (1080 / 900 / 720 / 640) and reduced-motion overrides.
    Loaded last so it can override every other stylesheet.
    ============================================================ */
 
 @media (max-width:1080px){
-  .flow{--per:3}
   .onboarding{grid-template-columns:1fr;gap:40px}
 }
 
@@ -18,6 +17,9 @@
   }
   .mockup aside{display:none}
   .screen{aspect-ratio:16/11}
+
+  /* How it works: story above the workflow card */
+  .stage{grid-template-columns:minmax(0,1fr)}
 
   /* FAQ: topics become a row of pills above the questions, scrolling sideways */
   .faqx{grid-template-columns:minmax(0,1fr);gap:28px}
@@ -38,8 +40,6 @@
 }
 
 @media (max-width:720px){
-  .flow{--per:2;--gap:12px}
-
   /* Testimonials: tabs on their own row, arrows underneath on the right */
   .testi{padding:28px 20px 0}
   .testi__nav{flex-direction:column;align-items:stretch;gap:0}
@@ -64,6 +64,12 @@
   .mockup{inset:0 0 -6% 2%;transform:rotateY(-5deg) rotateX(2deg)}
 
   .hero .button{padding:16px 26px;font-size:14.5px}
+
+  .stages__tabs{margin:0 calc(var(--gutter) * -1) 16px;padding:2px var(--gutter)}
+  .stages__tab{padding:11px 16px;font-size:13.5px}
+  .stage__actions{flex-direction:column;align-items:flex-start}
+  .stage__mock{padding:18px}
+  .stage__steps li{padding:12px 14px}
 
   .formcard{padding:22px 20px 22px}
   .formGrid{grid-template-columns:1fr}
@@ -111,15 +117,6 @@
   .mobilecta.show{opacity:1;pointer-events:auto;transform:none}
 }
 
-@media (max-width:560px){
-  /* Steps carousel: a peek of the next card, and arrows and dots that fit the smallest screens */
-  .flow{--per:1.25}
-  .flow__ctrl{gap:8px}
-  .flow__dot{padding:0 1.5px}
-  .flow__dot i{width:6px;height:6px}
-  .flow__dot.is-active i{width:20px}
-}
-
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
   *,*::before,*::after{
@@ -128,7 +125,7 @@
     transition-duration:.001ms !important;
   }
   .reveal{opacity:1;transform:none}
-  .flow.is-ready .flow__track{transition:none}
+  .stages.is-ready .stage{transition:none}
   .testi__slide{transition:none}
   .testi__tab.is-active .testi__bar{animation:none;transform:scaleX(1)}
 }

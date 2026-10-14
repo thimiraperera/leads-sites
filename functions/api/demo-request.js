@@ -9,8 +9,8 @@
    Variables (Cloudflare dashboard > Workers & Pages > this project > Settings > Variables and Secrets):
      GMAIL_USER          Text. The Gmail address that sends the email, e.g. leads@gmail.com.
      GMAIL_APP_PASSWORD  Secret. A Gmail app password for that address (myaccount.google.com/apppasswords).
-     LEAD_TO             Optional. Where requests go; one address or several separated by commas.
-                         Defaults to GMAIL_USER.
+     LEAD_TO             Optional. Where requests go: one address, or up to 10 separated by commas
+                         (e.g. "sales@blinq.com.au, owner@gmail.com"). Defaults to GMAIL_USER.
      SEND_FROM_NAME      Optional. The sender name on the email. Defaults to "BlinQ demo requests".
      TURNSTILE_SITE_KEY  Optional, together with TURNSTILE_SECRET: turns on the Turnstile check.
      TURNSTILE_SECRET    Secret. Recommended once the form gets spam.
@@ -99,7 +99,7 @@ export async function onRequestPost({ request, env }) {
   }
 
   const user = text(env.GMAIL_USER, 120);
-  const to = String(env.LEAD_TO || user).split(",").map((s) => s.trim()).filter((s) => EMAIL.test(s)).slice(0, 5);
+  const to = String(env.LEAD_TO || user).split(",").map((s) => s.trim()).filter((s) => EMAIL.test(s)).slice(0, 10);
   if (!EMAIL.test(user) || !to.length) return json({ error: "Sending is not switched on for this site yet." }, 503);
 
   const subject = "New demo request: " + lead.name + (lead.business ? ", " + lead.business : "");

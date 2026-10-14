@@ -49,7 +49,7 @@ password**. Replies go straight to the person who filled in the form (it's set a
    |---|---|---|
    | `GMAIL_USER` | Text | The Gmail address from step 1 |
    | `GMAIL_APP_PASSWORD` | Secret | The 16-character app password (spaces are fine) |
-   | `LEAD_TO` | Text | Optional. Where requests go; several addresses separated by commas. Defaults to `GMAIL_USER` |
+   | `LEAD_TO` | Text | Optional. Who receives requests: one address, or up to 10 separated by commas. Defaults to `GMAIL_USER` |
    | `SEND_FROM_NAME` | Text | Optional. Sender name in the inbox. Defaults to "BlinQ demo requests" |
 
 5. Variables only apply to new deployments: **Deployments** > latest > **Retry deployment** (or push

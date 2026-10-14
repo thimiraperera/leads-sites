@@ -24,8 +24,8 @@
     frame.src = VIDEO_SRC;
     screenEl.classList.add('playing');
     cover.classList.add('playing');
-    if (footTitle) footTitle.textContent = 'Now playing — BlinQ Software overview';
-    if (footSub)   footSub.textContent   = 'Watch how BlinQ connects your workflow';
+    if (footTitle) footTitle.textContent = 'Now playing — BlinQ Installer App demo';
+    if (footSub)   footSub.textContent   = 'Manage blinds installations from your phone';
   }
 
   function stopVideo() {
@@ -33,7 +33,7 @@
     screenEl.classList.remove('playing');
     cover.classList.remove('playing');
     if (footTitle) footTitle.textContent = 'See how BlinQ brings it all together';
-    if (footSub)   footSub.textContent   = 'Illustrative workflow preview · Play the real overview';
+    if (footSub)   footSub.textContent   = 'Illustrative workflow preview · Play the Installer App demo';
   }
 
   if (playBtn)  playBtn.addEventListener('click', function (e) { e.stopPropagation(); playVideo(); });

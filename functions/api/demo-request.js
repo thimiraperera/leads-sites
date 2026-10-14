@@ -173,8 +173,10 @@ async function sendMail({ user, pass, fromName, to, replyTo, subject, body, helo
         const line = buffer.slice(start, end);
         if (/^\d{3}(?: |$)/.test(line)) {
           const code = Number(line.slice(0, 3));
+          // Every line of the reply without its "534-" prefixes, e.g. "5.7.9 Application-specific password required ..."
+          const text = buffer.slice(0, end).split("\r\n").map((l) => l.slice(4)).join(" ");
           buffer = buffer.slice(end + 2);
-          return { code, line };
+          return { code, text };
         }
         start = end + 2;
       }
@@ -188,7 +190,7 @@ async function sendMail({ user, pass, fromName, to, replyTo, subject, body, helo
   const step = async (name, command, codes) => {
     if (command !== null) await write(command + "\r\n");
     const r = await reply();
-    if (!codes.includes(r.code)) throw new Error(name + " was refused (" + r.code + " " + r.line.slice(4, 120) + ")");
+    if (!codes.includes(r.code)) throw new Error(name + " was refused (" + r.code + " " + r.text.slice(0, 240) + ")");
     return r;
   };
 

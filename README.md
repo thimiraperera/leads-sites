@@ -24,6 +24,13 @@ The form posts to `/api/demo-request`. That Cloudflare Pages Function checks the
 them to your inbox through Gmail's SMTP server (smtp.gmail.com, port 465) with a Gmail **app
 password**. Replies go straight to the person who filled in the form (it's set as Reply-To).
 
+The email is HTML with a plain-text copy, sent to every `LEAD_TO` address as a blind copy (BCC), and
+includes visitor details gathered only when the form is submitted: device, screen, language, time
+zone, referring site, campaign tags, time on page and what they opened, plus IP address,
+approximate location and network from Cloudflare. Nothing is stored. BlinQ's privacy policy should
+mention that enquiries include these details. (The live copy of site 01 with the working form is
+the private `blinq-leads-1` repo, on a Cloudflare Worker.)
+
 ### 1. Create a Gmail app password
 
 1. Sign in to the Gmail account that should send the emails (a dedicated one such as
@@ -51,6 +58,7 @@ password**. Replies go straight to the person who filled in the form (it's set a
    | `GMAIL_APP_PASSWORD` | Secret | The 16-character app password (spaces are fine) |
    | `LEAD_TO` | Text | Optional. Who receives requests: one address, or up to 10 separated by commas. Defaults to `GMAIL_USER` |
    | `SEND_FROM_NAME` | Text | Optional. Sender name in the inbox. Defaults to "BlinQ demo requests" |
+   | `TIMEZONE` | Text | Optional. Time zone for "Received" in the email, e.g. `Australia/Sydney`. Defaults to UTC |
 
 5. Variables only apply to new deployments: **Deployments** > latest > **Retry deployment** (or push
    any commit).

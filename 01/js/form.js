@@ -3,7 +3,8 @@
    Demo request form: the business-type choice reveals step 2;
    submitting checks the fields and sends them to the Cloudflare
    Pages Function at /api/demo-request, which emails them through
-   Gmail (see functions/api/demo-request.js and the README).
+   Gmail (see functions/api/demo-request.js and the README),
+   together with the visit details below.
    Where that Function isn't available (e.g. GitHub Pages, or
    sending not switched on yet) the visitor is offered an email
    link to the support address with their details filled in.
@@ -27,6 +28,87 @@
   var openedAt = 0;          // when step 2 opened: very fast submits are bots
   var service = null;        // { enabled, turnstile } from the Function, fetched once
   var turnstileToken = '';
+
+  /* ==========================================================
+     0. VISIT DETAILS
+     Noted quietly while the page is open and sent only with a
+     submitted request (never on their own, nothing stored here):
+     how they arrived, what they looked at, and their device.
+     ========================================================== */
+  var pageLoadedAt = Date.now();
+  var landing = location.href.split('#')[0];
+  var referrer = document.referrer || '';
+  var seen = { video: false, scroll: 0, faq: [], stages: [] };
+  function remember(list, item, max) { if (item && list.indexOf(item) === -1 && list.length < max) list.push(item); }
+
+  var playBtn = document.getElementById('playBtn');
+  if (playBtn) playBtn.addEventListener('click', function () { seen.video = true; });
+
+  function trackScroll() {
+    var doc = document.documentElement;
+    var pct = Math.round((window.scrollY + window.innerHeight) / Math.max(doc.scrollHeight, 1) * 100);
+    if (pct > seen.scroll) seen.scroll = Math.min(100, pct);
+  }
+  var scrollTick = false;
+  window.addEventListener('scroll', function () {
+    if (scrollTick) return;
+    scrollTick = true;
+    window.requestAnimationFrame(function () { trackScroll(); scrollTick = false; });
+  }, { passive: true });
+  trackScroll();
+
+  document.addEventListener('click', function (e) {
+    if (!e.target.closest) return;
+    var summary = e.target.closest('.faqx__item > summary');
+    if (summary) {
+      // after the click has opened (or closed) it
+      setTimeout(function () {
+        var q = summary.querySelector('span');
+        if (summary.parentElement.open && q) remember(seen.faq, q.textContent.trim(), 6);
+      }, 0);
+    }
+    var stage = e.target.closest('.stages__tab');
+    if (stage) remember(seen.stages, stage.textContent.replace(/\s+/g, ' ').trim(), 5);
+  });
+
+  function visitDetails() {
+    var params;
+    try { params = new URL(landing).searchParams; } catch (x) { params = new URLSearchParams(''); }
+    var utm = {};
+    ['source', 'medium', 'campaign', 'term', 'content'].forEach(function (k) {
+      var v = params.get('utm_' + k);
+      if (v) utm[k] = v;
+    });
+    var clickIds = ['gclid', 'gbraid', 'wbraid', 'fbclid', 'msclkid', 'ttclid', 'li_fat_id'].filter(function (k) { return params.has(k); });
+    var tz = '';
+    try { tz = Intl.DateTimeFormat().resolvedOptions().timeZone || ''; } catch (x) {}
+    var localTime = '';
+    try { localTime = new Date().toLocaleString('en-GB', { dateStyle: 'medium', timeStyle: 'short' }); } catch (x) { localTime = new Date().toString(); }
+    var uad = navigator.userAgentData;
+    trackScroll();
+    return {
+      screen: screen.width + ' × ' + screen.height,
+      dpr: Math.round((window.devicePixelRatio || 1) * 100) / 100,
+      viewport: window.innerWidth + ' × ' + window.innerHeight,
+      touch: navigator.maxTouchPoints || 0,
+      mobile: !!(uad && uad.mobile),
+      colorScheme: window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'Dark' : 'Light',
+      connection: (navigator.connection && navigator.connection.effectiveType) || '',
+      language: navigator.language || '',
+      timezone: tz,
+      localTime: localTime,
+      referrer: referrer,
+      landing: landing,
+      utm: utm,
+      clickIds: clickIds,
+      timeOnPage: Math.round((Date.now() - pageLoadedAt) / 1000),
+      scrollDepth: seen.scroll,
+      videoPlayed: seen.video,
+      faqOpened: seen.faq.slice(),
+      stagesViewed: seen.stages.slice(),
+      gpc: navigator.globalPrivacyControl === true
+    };
+  }
 
   /* ==========================================================
      1. BUSINESS TYPE CHOICES + PROGRESSIVE FORM REVEAL
@@ -173,7 +255,8 @@
       elapsed: openedAt ? Date.now() - openedAt : 0,
       turnstile: turnstileToken,
       site: SITE,
-      page: location.href.split('#')[0]
+      page: location.href.split('#')[0],
+      meta: visitDetails()
     };
   }
 

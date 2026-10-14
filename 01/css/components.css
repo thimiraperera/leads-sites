@@ -243,3 +243,41 @@
   color:#9A9A9A;
   margin:14px 0 0;
 }
+
+/* Field checks, sending status and the sent state (js/form.js) */
+.formField.is-invalid input,
+.formField.is-invalid select{border-color:var(--red);box-shadow:0 0 0 3px rgba(240,52,31,.12)}
+.formCheck.is-invalid{color:#9F1D12}
+.fieldError{margin:0;font-size:12px;font-weight:500;color:#C4231A}
+.formCheck + .fieldError{margin:-12px 0 16px}
+.formSubmit:disabled{opacity:.7;cursor:progress;transform:none}
+.formStatus{
+  margin:12px 0 0;
+  padding:12px 14px;
+  border-radius:8px;
+  background:#FDECEA;
+  font-size:13px;
+  line-height:1.55;
+  color:#8A1C12;
+}
+.formStatus a{color:inherit;font-weight:600;text-decoration:underline;text-underline-offset:2px}
+.formTurnstile{margin:0 0 14px}
+/* Honeypot: off-screen for people, still in the form for bots */
+.formHp{position:absolute;left:-10000px;width:1px;height:1px;overflow:hidden}
+
+.formcard.is-sent > :not(.formSuccess){display:none}
+.formSuccess{padding:28px 4px 20px;text-align:center}
+.formSuccess:focus{outline:none}
+.formSuccess__tick{
+  display:inline-grid;
+  place-items:center;
+  width:52px;
+  height:52px;
+  margin-bottom:16px;
+  border-radius:50%;
+  background:var(--ok-bg);
+  font-size:24px;
+  font-weight:700;
+  color:var(--ok-text);
+}
+.formSuccess .formSub{margin:8px 0 0}

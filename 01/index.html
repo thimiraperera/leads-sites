@@ -22,20 +22,20 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
 
   <!-- Styles (order matters: each file builds on the ones before it) -->
-  <link rel="stylesheet" href="css/base.css?v=20261014b">
-  <link rel="stylesheet" href="css/components.css?v=20261014b">
-  <link rel="stylesheet" href="css/layout.css?v=20261014b">
-  <link rel="stylesheet" href="css/sections.css?v=20261014b">
-  <link rel="stylesheet" href="css/utilities.css?v=20261014b">
-  <link rel="stylesheet" href="css/responsive.css?v=20261014b">
+  <link rel="stylesheet" href="css/base.css?v=20261014c">
+  <link rel="stylesheet" href="css/components.css?v=20261014c">
+  <link rel="stylesheet" href="css/layout.css?v=20261014c">
+  <link rel="stylesheet" href="css/sections.css?v=20261014c">
+  <link rel="stylesheet" href="css/utilities.css?v=20261014c">
+  <link rel="stylesheet" href="css/responsive.css?v=20261014c">
 
   <!-- Scripts (deferred: run in order once the page is parsed) -->
-  <script src="js/stages.js?v=20261014b" defer></script>
-  <script src="js/testimonials.js?v=20261014b" defer></script>
-  <script src="js/faq.js?v=20261014b" defer></script>
-  <script src="js/form.js?v=20261014b" defer></script>
-  <script src="js/video.js?v=20261014b" defer></script>
-  <script src="js/main.js?v=20261014b" defer></script>
+  <script src="js/stages.js?v=20261014c" defer></script>
+  <script src="js/testimonials.js?v=20261014c" defer></script>
+  <script src="js/faq.js?v=20261014c" defer></script>
+  <script src="js/form.js?v=20261014c" defer></script>
+  <script src="js/video.js?v=20261014c" defer></script>
+  <script src="js/main.js?v=20261014c" defer></script>
 </head>
 <body>
 
@@ -198,6 +198,7 @@
             <span>Franchise</span><span class="marker">↗</span>
           </button>
         </div>
+        <input type="hidden" name="businessType" id="f-businessType">
 
         <div class="formDetails" id="formDetails" aria-hidden="true">
           <div class="detailsLabel">Your details</div>
@@ -205,22 +206,22 @@
           <div class="formGrid">
             <div class="formField">
               <label for="f-name">Your name</label>
-              <input id="f-name" name="name" type="text" autocomplete="name">
+              <input id="f-name" name="name" type="text" autocomplete="name" required maxlength="80">
             </div>
             <div class="formField">
               <label for="f-business">Business name</label>
-              <input id="f-business" name="business" type="text" autocomplete="organization">
+              <input id="f-business" name="business" type="text" autocomplete="organization" maxlength="100">
             </div>
           </div>
 
           <div class="formGrid">
             <div class="formField">
               <label for="f-email">Work email</label>
-              <input id="f-email" name="email" type="email" autocomplete="email">
+              <input id="f-email" name="email" type="email" autocomplete="email" required maxlength="120">
             </div>
             <div class="formField">
               <label for="f-phone">Phone number</label>
-              <input id="f-phone" name="phone" type="tel" autocomplete="tel">
+              <input id="f-phone" name="phone" type="tel" autocomplete="tel" maxlength="40">
             </div>
           </div>
 
@@ -254,18 +255,36 @@
           </div>
 
           <label class="formCheck">
-            <input type="checkbox" name="consent">
+            <input id="f-consent" type="checkbox" name="consent" required>
             <span>
               I agree that BlinQ may contact me about my enquiry. View the
               <a href="https://www.blinq.com.au/privacy-policy.html" target="_blank" rel="noopener noreferrer">Privacy Policy</a>.
             </span>
           </label>
 
+          <!-- Left empty by people; bots that fill it in are quietly ignored -->
+          <div class="formHp" aria-hidden="true">
+            <label for="f-website">Leave this field empty</label>
+            <input id="f-website" name="website" type="text" tabindex="-1" autocomplete="off">
+          </div>
+
+          <!-- Cloudflare Turnstile check, shown only when it is switched on (see README) -->
+          <div class="formTurnstile" id="formTurnstile" hidden></div>
+
           <button class="formSubmit" type="submit">
             Request my demo <span aria-hidden="true">→</span>
           </button>
 
+          <p class="formStatus" id="formStatus" role="alert" hidden></p>
+
           <p class="formNote">Next: choose a demo time that suits you.</p>
+        </div>
+
+        <!-- Shown once the request has been sent -->
+        <div class="formSuccess" id="formSuccess" tabindex="-1" hidden>
+          <span class="formSuccess__tick" aria-hidden="true">✓</span>
+          <h3 class="formTitle">Thanks, your demo request is on its way.</h3>
+          <p class="formSub">We’ll email you at <strong id="formSuccessEmail"></strong> to set up a time that suits you.</p>
         </div>
       </form>
     </section>

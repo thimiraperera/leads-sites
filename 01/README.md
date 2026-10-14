@@ -16,7 +16,7 @@ css/responsive.css         Breakpoints (1080 / 900 / 720 / 640) and reduced moti
 js/stages.js               How BlinQ works: stage tabs (click, arrow keys, Home / End)
 js/testimonials.js         Customer stories: tabs, arrows, 7-second auto-rotation
 js/faq.js                  FAQ: topic switching, Expand all / Collapse all
-js/form.js                 Business-type choice, step 2 reveal, submit placeholder
+js/form.js                 Business-type choice, step 2 reveal, field checks, sending
 js/video.js                Inline YouTube player in the hero
 js/main.js                 Header state, mobile CTA, scroll reveal
 assets/img/                Logos, favicon, social image, integration wordmarks, swatches
@@ -47,8 +47,11 @@ files for 10 minutes; a new `?v=` makes visitors fetch the updated files straigh
   starts open. Linking to `#faq-pricing` (or any topic id) opens that topic.
 - **Video**: change `data-video-id` on `#videoCover` in `index.html`.
 - **Colours and fonts**: `:root` tokens at the top of `css/base.css`.
-- **Demo form**: `js/form.js` only shows a confirmation. Wire the submit handler to your CRM or form
-  endpoint before going live.
+- **Demo form**: `js/form.js` checks the fields and posts them to `/api/demo-request`, the Cloudflare
+  Pages Function in `../functions/api/demo-request.js`, which emails them through Gmail. Setup steps
+  (Gmail app password, Cloudflare Pages, variables) are in the repo's main README. Where the Function
+  isn't running (GitHub Pages, or not configured yet) the form offers an email link to
+  support@blinq.com.au with the visitor's details filled in.
 - **Social image**: `og:image` uses a relative path. Set it to the full URL once the page has a domain.
 
 ## Images

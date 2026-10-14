@@ -59,6 +59,7 @@ the private `blinq-leads-1` repo, on a Cloudflare Worker.)
    | `LEAD_TO` | Text | Optional. Who receives requests: one address, or up to 10 separated by commas. Defaults to `GMAIL_USER` |
    | `SEND_FROM_NAME` | Text | Optional. Sender name in the inbox. Defaults to "BlinQ demo requests" |
    | `TIMEZONE` | Text | Optional. Time zone for "Received" in the email, e.g. `Australia/Sydney`. Defaults to UTC |
+   | `LOGO_URL` | Text | Optional. https address of the email's logo. On this repo set it to `https://<project-name>.pages.dev/01/assets/img/blinq-logo-email.png` |
 
 5. Variables only apply to new deployments: **Deployments** > latest > **Retry deployment** (or push
    any commit).

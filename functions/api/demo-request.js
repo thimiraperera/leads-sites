@@ -18,6 +18,8 @@
      SEND_FROM_NAME      Optional. The sender name on the email. Defaults to "BlinQ demo requests".
      TIMEZONE            Optional. Time zone for "Received" in the email, e.g. "Australia/Sydney" or
                          "Asia/Colombo". Defaults to UTC.
+     LOGO_URL            Optional. https address of the logo shown at the top of the email. Defaults to
+                         this site's /assets/img/blinq-logo-email.png (the header logo as a PNG).
      TURNSTILE_SITE_KEY  Optional, together with TURNSTILE_SECRET: turns on the Turnstile check.
      TURNSTILE_SECRET    Secret. Recommended once the form gets spam.
 
@@ -114,7 +116,11 @@ export async function onRequestPost({ request, env }) {
   if (!EMAIL.test(user) || !to.length) return json({ error: "Sending is not switched on for this site yet." }, 503);
 
   const visitor = visitorContext(request, body.meta);
-  const email = buildEmail(lead, visitor, { received: new Date(), timeZone: text(env.TIMEZONE, 60) });
+  // The email shows the website's header logo (a PNG copy: some mail apps can't show WebP),
+  // loaded from wherever this site runs; LOGO_URL can point it elsewhere.
+  const siteOrigin = new URL(request.url).origin;
+  const logoUrl = /^https:\/\/\S+$/.test(text(env.LOGO_URL, 300)) ? text(env.LOGO_URL, 300) : siteOrigin + "/assets/img/blinq-logo-email.png";
+  const email = buildEmail(lead, visitor, { received: new Date(), timeZone: text(env.TIMEZONE, 60), logoUrl, siteUrl: siteOrigin + "/" });
   try {
     await withTimeout(
       sendMail({
@@ -257,7 +263,7 @@ function receivedAt(date, timeZone) {
   }
 }
 
-export function buildEmail(lead, v, { received = new Date(), timeZone = "" } = {}) {
+export function buildEmail(lead, v, { received = new Date(), timeZone = "", logoUrl = "", siteUrl = "" } = {}) {
   const firstName = lead.name.split(" ")[0];
   const ipPlace = [v.city, v.region, countryName(v.country)].filter((x, i, a) => x && a.indexOf(x) === i).join(", ");
   const campaign = [v.utm.source, v.utm.medium, v.utm.campaign].filter(Boolean).join(" / ");
@@ -350,11 +356,17 @@ export function buildEmail(lead, v, { received = new Date(), timeZone = "" } = {
     '<div style="display:none;max-height:0;overflow:hidden;opacity:0;color:#F2F2F4;">' + e(preheader) + "</div>" +
     '<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background:#F2F2F4;"><tr><td align="center" style="padding:24px 12px;">' +
     '<table role="presentation" width="600" cellpadding="0" cellspacing="0" border="0" style="width:100%;max-width:600px;background:#FFFFFF;border:1px solid #E4E4E8;border-radius:14px;border-collapse:separate;overflow:hidden;">' +
-    // Header band
-    '<tr><td style="background:#0A0A0A;padding:20px 28px;">' +
+    // Header band: the website's header logo (white "BlinQ" text stands in if images are blocked)
+    '<tr><td bgcolor="#0A0A0A" style="background:#0A0A0A;padding:18px 28px;">' +
     '<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0"><tr>' +
-    '<td style="' + F + 'font-size:24px;font-weight:800;letter-spacing:-0.5px;color:#FFFFFF;">Blin<span style="color:#F0341F;">Q</span></td>' +
-    '<td align="right" style="' + F + 'font-size:13px;color:#9A9AA2;">Demo request</td>' +
+    '<td valign="middle" style="' + F + 'font-size:24px;font-weight:800;letter-spacing:-0.5px;color:#FFFFFF;">' +
+    (logoUrl
+      ? (siteUrl ? '<a href="' + e(siteUrl) + '" style="text-decoration:none;color:#FFFFFF;">' : "") +
+        '<img src="' + e(logoUrl) + '" width="91" height="40" alt="BlinQ" style="display:block;width:91px;height:40px;border:0;outline:none;' + F + 'font-size:22px;font-weight:800;color:#FFFFFF;">' +
+        (siteUrl ? "</a>" : "")
+      : 'Blin<span style="color:#F0341F;">Q</span>') +
+    "</td>" +
+    '<td align="right" valign="middle" style="' + F + 'font-size:13px;color:#9A9AA2;">Demo request</td>' +
     "</tr></table></td></tr>" +
     // Summary
     '<tr><td style="padding:28px 28px 4px;">' +
@@ -369,8 +381,8 @@ export function buildEmail(lead, v, { received = new Date(), timeZone = "" } = {
     // Details
     sections.map(sectionHtml).join("") +
     // Footer
-    '<tr><td style="padding:26px 28px 28px;">' +
-    '<div style="' + F + 'padding-top:16px;border-top:1px solid #EFEFF1;font-size:12px;line-height:18px;color:#8A8A92;">' +
+    '<tr><td align="center" style="padding:26px 28px 28px;">' +
+    '<div style="' + F + 'padding-top:16px;border-top:1px solid #EFEFF1;font-size:12px;line-height:18px;color:#8A8A92;text-align:center;">' +
     "Received " + e(when) + " from " + e(site) + ". Reply to this email to answer " + e(firstName) + " directly.<br>" + e(note) +
     "</div></td></tr>" +
     "</table></td></tr></table></body></html>";
